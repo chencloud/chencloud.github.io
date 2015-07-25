@@ -213,12 +213,63 @@
       
         <p><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external"><strong>MathJax basic tutorial and quick reference</strong></a> </p>
 <ol>
-<li><p>For inline formulas, enclose the formula in <code>$...$</code>. For displayed formulas, use <code>$$...$$</code>.<br>These render differently:$\sum<em>{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$(inline)or<br>$$\sum</em>{i=0}^n i^{2} = \frac{(n^2+n)(2n+1)}{6}\tag{display}$$<br>the tex command:<code>$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\tag{display}$$</code></p>
-</li>
-<li><p>For Greek letters, use \alpha, \beta, …,\theta,\zeta,\pi,\omega: $\alpha$,$\beta$,…,$\theta$,$\zeta$,$\pi$,$\omega$. For uppercase, use \Gamma, \Delta, …, \Omega: $\Gamma$,$\Delta$,…,$\Omega$.<br>command|render|command|render|<br>———|:———:|———-|:———:|<br>\alhpa|$\alpha$|\beta|$\beta$<br>\theta|$\theta$|\zeta|$\zeta$<br>\omega|$\omega$|\pi  |$\pi$<br>\Gamma|$\Gamma$|\Omega|$\Omega$<br>\Delta|$\Delta$|\Theta|$\Theta$<br>\Pi   |$\Pi$  |\gamma|$\gamma$</p>
-</li>
-<li><p>Flow graph</p>
-</li>
+<li>For inline formulas, enclose the formula in <code>$...$</code>. For displayed formulas, use <code>$$...$$</code>.<br>These render differently: $\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$ (inline)or</li>
+</ol>
+<p>$$\sum_{i=0}^n i^{2} = \frac{(n^2+n)(2n+1)}{6}\tag{display}$$</p>
+<pre><code>the tex command:`$$\sum_<span class="list">{i=0}</span>^n i^<span class="number">2</span> = \frac<span class="list">{(n^2+n)(2n+1)}</span><span class="list">{6}</span>\tag<span class="list">{display}</span>$$`
+</code></pre><ol>
+<li>For Greek letters, use \alpha, \beta, …,\theta,\zeta,\pi,\omega: $\alpha$,$\beta$,…,$\theta$,$\zeta$,$\pi$,$\omega$. For uppercase, use \Gamma, \Delta, …, \Omega: $\Gamma$,$\Delta$,…,$\Omega$.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th style="text-align:center">render</th>
+<th>command</th>
+<th style="text-align:center">render</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\alhpa</td>
+<td style="text-align:center">$\alpha$</td>
+<td>\beta</td>
+<td style="text-align:center">$\beta$</td>
+</tr>
+<tr>
+<td>\theta</td>
+<td style="text-align:center">$\theta$</td>
+<td>\zeta</td>
+<td style="text-align:center">$\zeta$</td>
+</tr>
+<tr>
+<td>\omega</td>
+<td style="text-align:center">$\omega$</td>
+<td>\pi</td>
+<td style="text-align:center">$\pi$</td>
+</tr>
+<tr>
+<td>\Gamma</td>
+<td style="text-align:center">$\Gamma$</td>
+<td>\Omega</td>
+<td style="text-align:center">$\Omega$</td>
+</tr>
+<tr>
+<td>\Delta</td>
+<td style="text-align:center">$\Delta$</td>
+<td>\Theta</td>
+<td style="text-align:center">$\Theta$</td>
+</tr>
+<tr>
+<td>\Pi</td>
+<td style="text-align:center">$\Pi$</td>
+<td>\gamma</td>
+<td style="text-align:center">$\gamma$</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Flow graph</li>
 </ol>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">st=&#62;start: Start&#10;op=&#62;operation: Your Operation&#10;cond=&#62;condition: Yes or No?&#10;e=&#62;end&#10;&#10;st-&#62;op-&#62;cond&#10;cond(yes)-&#62;e&#10;cond(no)-&#62;op</span><br></pre></td></tr></table></figure>
 <p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-7-25/68826190.jpg" alt=""></p>
