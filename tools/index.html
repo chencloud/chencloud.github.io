@@ -417,7 +417,7 @@ MathJax.Hub.Queue(function() {
     var sequence_id = "sequence"+i;
     $(this).parent().after("<div id="+sequence_id+" ></div>");
     var sequence = Diagram.parse(data);
-    sequence.drawSVG(sequence_id,{theme:'hand'});
+    sequence.drawSVG(sequence_id,{theme:'simple'});
 
     // you can also try to pass options:
     /*
