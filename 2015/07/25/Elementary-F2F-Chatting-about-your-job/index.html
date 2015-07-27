@@ -436,7 +436,7 @@ $(document).ready(function() {
     var data = block.textContent;
     //build id
     var diagram_id = "diagram"+i;
-    this.after("<div id="+digram_id+" ></div>");
+    $(this).after("<div id="+diagram_id+" ></div>");
     var diagram = flowchart.parse(data);
     diagram.drawSVG(digram_id);
 
@@ -480,7 +480,7 @@ $(document).ready(function() {
                               }
                             });
   });
-  this.hide();
+  $(this).hide();
 });
 </script>
 
