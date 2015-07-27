@@ -43,70 +43,11 @@ take some">
     <link rel="icon" href="/img/logo.jpg">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-
-<script type="text/javascript" src="/js/raphael-min.js"></script>
-<script type="text/javascript" src="/js/flowchart-latest.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-
-  $('pre code.flow').each(function(i, block) {
-    
-    var data = block.textContent;
-    //build id
-    var diagram_id = "diagram"+i;
-    $(this).parent().after("<div id="+diagram_id+" ></div>");
-    var diagram = flowchart.parse(data);
-    diagram.drawSVG(diagram_id);
-
-    // you can also try to pass options:
-    /*
-    diagram.drawSVG('diagram', {
-                              'x': 0,
-                              'y': 0,
-                              'line-width': 3,
-                              'line-length': 50,
-                              'text-margin': 10,
-                              'font-size': 14,
-                              'font-color': 'black',
-                              'line-color': 'black',
-                              'element-color': 'black',
-                              'fill': 'white',
-                              'yes-text': 'yes',
-                              'no-text': 'no',
-                              'arrow-end': 'block',
-                              'scale': 1,
-                              // style symbol types
-                              'symbols': {
-                                'start': {
-                                  'font-color': 'red',
-                                  'element-color': 'green',
-                                  'fill': 'yellow'
-                                },
-                                'end':{
-                                  'class': 'end-element'
-                                }
-                              },
-                              // even flowstate support ;
-                              'flowstate' : {
-                                'past' : { 'fill' : '#CCCCCC', 'font-size' : 12},
-                                'current' : {'fill' : 'yellow', 'font-color' : 'red', 'font-weight' : 'bold'},
-                                'future' : { 'fill' : '#FFFF99'},
-                                'request' : { 'fill' : 'blue'},
-                                'invalid': {'fill' : '#444444'},
-                                'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
-                                'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
-                              }
-                            });*/
-  $(this).parent().hide();
-  });
-});
-</script>
-
-
-
-
-
+  <script async type="text/javascript" src="/js/raphael-min.js"></script>
+  <script async type="text/javascript" src="/js/flowchart-latest.js"></script>
+  <script async type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script async type="text/javascript" src="/js/underscore.js"></script>
+  <script async type="text/javascript" src="/js/sequence-diagram-min.js"></script>
 </head>
 
 <body>
@@ -488,6 +429,126 @@ MathJax.Hub.Queue(function() {
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+
+
+<script>
+//$(document).ready(function() {
+
+  $('pre code.flow').each(function(i, block) {
+    
+    var data = block.textContent;
+    //build id
+    var diagram_id = "diagram"+i;
+    $(this).parent().after("<div id="+diagram_id+" ></div>");
+    var diagram = flowchart.parse(data);
+    diagram.drawSVG(diagram_id);
+
+    // you can also try to pass options:
+    /*
+    diagram.drawSVG('diagram', {
+                              'x': 0,
+                              'y': 0,
+                              'line-width': 3,
+                              'line-length': 50,
+                              'text-margin': 10,
+                              'font-size': 14,
+                              'font-color': 'black',
+                              'line-color': 'black',
+                              'element-color': 'black',
+                              'fill': 'white',
+                              'yes-text': 'yes',
+                              'no-text': 'no',
+                              'arrow-end': 'block',
+                              'scale': 1,
+                              // style symbol types
+                              'symbols': {
+                                'start': {
+                                  'font-color': 'red',
+                                  'element-color': 'green',
+                                  'fill': 'yellow'
+                                },
+                                'end':{
+                                  'class': 'end-element'
+                                }
+                              },
+                              // even flowstate support ;
+                              'flowstate' : {
+                                'past' : { 'fill' : '#CCCCCC', 'font-size' : 12},
+                                'current' : {'fill' : 'yellow', 'font-color' : 'red', 'font-weight' : 'bold'},
+                                'future' : { 'fill' : '#FFFF99'},
+                                'request' : { 'fill' : 'blue'},
+                                'invalid': {'fill' : '#444444'},
+                                'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
+                                'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
+                              }
+                            });*/
+  $(this).parent().hide();
+  });
+//});
+</script>
+
+
+
+
+
+
+
+<script>
+//$(document).ready(function() {
+
+  $('pre code.seq').each(function(i, block) {
+    
+    var data = block.textContent;
+    //build id
+    var sequence_id = "sequence"+i;
+    $(this).parent().after("<div id="+sequence_id+" ></div>");
+    var sequence = Diagram.parse(data);
+    sequence.drawSVG(sequence_id,{theme:'hand'});
+
+    // you can also try to pass options:
+    /*
+    sequence.drawSVG('diagram', {
+                              'x': 0,
+                              'y': 0,
+                              'line-width': 3,
+                              'line-length': 50,
+                              'text-margin': 10,
+                              'font-size': 14,
+                              'font-color': 'black',
+                              'line-color': 'black',
+                              'element-color': 'black',
+                              'fill': 'white',
+                              'yes-text': 'yes',
+                              'no-text': 'no',
+                              'arrow-end': 'block',
+                              'scale': 1,
+                              // style symbol types
+                              'symbols': {
+                                'start': {
+                                  'font-color': 'red',
+                                  'element-color': 'green',
+                                  'fill': 'yellow'
+                                },
+                                'end':{
+                                  'class': 'end-element'
+                                }
+                              },
+                              // even flowstate support ;
+                              'flowstate' : {
+                                'past' : { 'fill' : '#CCCCCC', 'font-size' : 12},
+                                'current' : {'fill' : 'yellow', 'font-color' : 'red', 'font-weight' : 'bold'},
+                                'future' : { 'fill' : '#FFFF99'},
+                                'request' : { 'fill' : 'blue'},
+                                'invalid': {'fill' : '#444444'},
+                                'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
+                                'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
+                              }
+                            });*/
+  $(this).parent().hide();
+  });
+//});
+</script>
 
 
 
