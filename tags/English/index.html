@@ -397,7 +397,7 @@ $(document).ready(function() {
     var data = block.textContent;
     //build id
     var diagram_id = "diagram"+i;
-    $(this).after("<div id="+diagram_id+" ></div>");
+    $(this).parent().after("<div id="+diagram_id+" ></div>");
     var diagram = flowchart.parse(data);
     diagram.drawSVG(diagram_id);
 
@@ -439,9 +439,9 @@ $(document).ready(function() {
                                 'approved' : { 'fill' : '#58C4A3', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
                                 'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
                               }
-                            });
-  });*/
+                            });*/
   $(this).hide();
+  });
 });
 </script>
 
