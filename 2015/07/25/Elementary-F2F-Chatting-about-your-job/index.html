@@ -438,10 +438,10 @@ $(document).ready(function() {
     var diagram_id = "diagram"+i;
     $(this).after("<div id="+diagram_id+" ></div>");
     var diagram = flowchart.parse(data);
-    diagram.drawSVG(digram_id);
+    diagram.drawSVG(diagram_id);
 
     // you can also try to pass options:
-  
+    /*
     diagram.drawSVG('diagram', {
                               'x': 0,
                               'y': 0,
@@ -479,7 +479,7 @@ $(document).ready(function() {
                                 'rejected' : { 'fill' : '#C45879', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' }
                               }
                             });
-  });
+  });*/
   $(this).hide();
 });
 </script>
