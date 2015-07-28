@@ -99,14 +99,25 @@
                 <h2>感谢Editor.md提供这么牛逼的在免费在线MarkDown编辑器，具体详情请点击<href src="http://pandao.github.io/editor.md">Editor.md</href></h2>          
             </header>
 	    <div id="content-toolbar">
-             </div>
+		<input type="text" name="filename" value="test_save"></input>
+		<button id="get-md-btn">Export to Markdown</button>
+                <button id="get-html-btn">Export to Html</button>
+            </div>
             <div id="test-editormd"></div>
         </div>
         <script src="../js/jquery.min.js"></script>
         <script src="../js/editormd.js"></script>   
         <script type="text/javascript">
             var testEditor;
-            
+            function downloadFile(fileName, content){
+    		var aLink = document.createElement('a');
+    		var blob = new Blob([content]);
+    		var evt = document.createEvent("HTMLEvents");
+    		evt.initEvent("click", false, false);//initEvent 不加后两个参数在FF下会报错, 感谢 Barret Lee 的反馈
+    		aLink.download = fileName;
+    		aLink.href = URL.createObjectURL(blob);
+    		aLink.dispatchEvent(evt);
+		}
             $(function() {
                 
                 //$.get('', function(md){
@@ -152,6 +163,21 @@
                             //this.resize("100%", 640);
                         }
                     });
+                 $("#get-md-btn").click(function(){
+			var filename = $("input[name=filename]").val();
+			if(!filename) filename = "test_save";
+			filename = filename + ".md";
+			var content = testEditor.getMarkdown();
+			downloadFile(filename,content);
+                   });
+                
+                 $("#get-html-btn").click(function() {
+			var filename = $("input[name=filename]").val();
+			if(!filename) filename = "test_save";
+			filename = filename + ".html";
+			var content = testEditor.getHTML();
+			downloadFile(filename,content);
+                  });
                 //});
             });
         </script>
