@@ -95,10 +95,10 @@
         <div id="layout">
             <header>
                 <h1>Editor.md 自定义Markdown编辑框</h1>
-		<img src="../images/logos/editormd-logo-320x320.png"></img>
+		<img src="../images/logos/editormd-logo-144x144.png"></img>
                 <h2>感谢Editor.md提供这么牛逼的在免费在线MarkDown编辑器，具体详情请点击<href src="http://pandao.github.io/editor.md">Editor.md</href></h2>          
             </header>
-	    <div id="content-toolbar">
+	    <div id="content-toolbar" class="btns">
 		<input type="text" name="filename" value="test_save"></input>
 		<button id="get-md-btn">Export to Markdown</button>
                 <button id="get-html-btn">Export to Html</button>
@@ -175,7 +175,13 @@
 			var filename = $("input[name=filename]").val();
 			if(!filename) filename = "test_save";
 			filename = filename + ".html";
-			var content = testEditor.getHTML();
+			var content = testEditor.getHTML({
+                    		emoji           : true,
+                    		taskList        : true,
+                    		tex             : true,  // 默认不解析
+                    		flowChart       : true,  // 默认不解析
+                    		sequenceDiagram : true,  // 默认不解析
+			});
 			downloadFile(filename,content);
                   });
                 //});
