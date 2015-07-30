@@ -20,7 +20,7 @@ Heading 1Heading 2Heading 3Heading 4Heading 5Heading 6Heading 1 link Heading lin
 <meta property="og:image" content="https://pandao.github.io/editor.md/examples/images/4.jpg">
 <meta property="og:image" content="https://pandao.github.io/editor.md/examples/images/8.jpg">
 <meta property="og:image" content="https://pandao.github.io/editor.md/examples/images/7.jpg">
-<meta property="og:updated_time" content="2015-07-30T03:18:00.411Z">
+<meta property="og:updated_time" content="2015-07-30T03:21:24.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MarkDown学习之旅">
 <meta name="twitter:description" content="MarkDown 语法简介目录 (Table of Contents)
@@ -515,8 +515,8 @@ Heading 1Heading 2Heading 3Heading 4Heading 5Heading 6Heading 1 link Heading lin
     cond(yes)-&gt;e
     cond(no)-&gt;<span class="keyword">op</span>
 </code></pre><pre><code>
+----
 
-<span class="sml">
 ```flow
 st=&gt;start: 用户登陆
 <span class="keyword">op</span>=&gt;operation: 登陆操作
@@ -525,7 +525,7 @@ e=&gt;<span class="keyword">end</span>: 进入后台
 
 st-&gt;<span class="keyword">op</span>-&gt;cond
 cond(yes)-&gt;e
-cond(no)-&gt;<span class="keyword">op</span></span>
+cond(no)-&gt;<span class="keyword">op</span>
 </code></pre><p>[========]</p>
 <h3 id="绘制序列图_Sequence_Diagram">绘制序列图 Sequence Diagram</h3><pre><code>```seq
     Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
@@ -533,12 +533,12 @@ cond(no)-&gt;<span class="keyword">op</span></span>
     China--&gt;Andre<span class="variable">w:</span> How are     you? 
     Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!
 </code></pre><pre><code>
-
-<span class="vim">```seq
-Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
-Note <span class="keyword">right</span> of Chin<span class="variable">a:</span> China thinks\nabout it 
-China--&gt;Andre<span class="variable">w:</span> How are you? 
-Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!</span>
+<span class="comment">-----          </span>
+```seq
+<span class="type">Andrew</span>-&gt;<span class="type">China</span>: <span class="type">Says</span> <span class="type">Hello</span> 
+<span class="type">Note</span> right <span class="keyword">of</span> <span class="type">China</span>: <span class="type">China</span> thinks\nabout it 
+<span class="type">China</span><span class="comment">--&gt;Andrew: How are you? </span>
+<span class="type">Andrew</span>-&gt;&gt;<span class="type">China</span>: <span class="type">I</span> am good thanks!
 </code></pre><h3 id="End">End</h3>
       
     </div>
