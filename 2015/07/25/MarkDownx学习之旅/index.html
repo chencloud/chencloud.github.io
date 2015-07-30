@@ -20,7 +20,7 @@ Heading 1Heading 2Heading 3Heading 4Heading 5Heading 6Heading 1 link Heading lin
 <meta property="og:image" content="https://pandao.github.io/editor.md/examples/images/4.jpg">
 <meta property="og:image" content="https://pandao.github.io/editor.md/examples/images/8.jpg">
 <meta property="og:image" content="https://pandao.github.io/editor.md/examples/images/7.jpg">
-<meta property="og:updated_time" content="2015-07-30T03:24:35.922Z">
+<meta property="og:updated_time" content="2015-07-30T03:28:05.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MarkDown学习之旅">
 <meta name="twitter:description" content="MarkDown 语法简介目录 (Table of Contents)
@@ -513,32 +513,21 @@ e=&gt;<span class="keyword">end</span>: 进入后台
 st-&gt;<span class="keyword">op</span>-&gt;cond
 cond(yes)-&gt;e
 cond(no)-&gt;<span class="keyword">op</span>
-</code></pre><pre><code>
-----
 ```flow
-st=&gt;start: 用户登陆
-<span class="keyword">op</span>=&gt;operation: 登陆操作
-cond=&gt;condition: 登陆成功 <span class="type">Yes</span> or <span class="type">No</span>?
-e=&gt;<span class="keyword">end</span>: 进入后台
-
-st-&gt;<span class="keyword">op</span>-&gt;cond
-cond(yes)-&gt;e
-cond(no)-&gt;<span class="keyword">op</span>
-</code></pre><p>[========]</p>
+</code></pre><hr>
+<pre><code class="flow">st=&#62;start: &#29992;&#25143;&#30331;&#38470;&#10;op=&#62;operation: &#30331;&#38470;&#25805;&#20316;&#10;cond=&#62;condition: &#30331;&#38470;&#25104;&#21151; Yes or No?&#10;e=&#62;end: &#36827;&#20837;&#21518;&#21488;&#10;&#10;st-&#62;op-&#62;cond&#10;cond(yes)-&#62;e&#10;cond(no)-&#62;op
+</code></pre>
+<p>[========]</p>
 <h3 id="绘制序列图_Sequence_Diagram">绘制序列图 Sequence Diagram</h3><pre><code>```seq
 Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
 Note <span class="keyword">right</span> of Chin<span class="variable">a:</span> China thinks\nabout it 
 China--&gt;Andre<span class="variable">w:</span> How are     you? 
 Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!
-</code></pre><pre><code>
-
-<span class="haskell"><span class="comment">-----          </span>
 ```seq
-<span class="type">Andrew</span>-&gt;<span class="type">China</span>: <span class="type">Says</span> <span class="type">Hello</span> 
-<span class="type">Note</span> right <span class="keyword">of</span> <span class="type">China</span>: <span class="type">China</span> thinks\nabout it 
-<span class="type">China</span><span class="comment">--&gt;Andrew: How are you? </span>
-<span class="type">Andrew</span>-&gt;&gt;<span class="type">China</span>: <span class="type">I</span> am good thanks!</span>
-</code></pre><h3 id="End">End</h3>
+</code></pre><hr>
+<pre><code class="seq">Andrew-&#62;China: Says Hello &#10;Note right of China: China thinks\nabout it &#10;China--&#62;Andrew: How are you? &#10;Andrew-&#62;&#62;China: I am good thanks!
+</code></pre>
+<h3 id="End">End</h3>
       
     </div>
     
