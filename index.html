@@ -1540,17 +1540,15 @@ I can <span class="keyword">state</span> their opinions, and agree and disagree 
 </blockquote>
 <p>[========]</p>
 <h3 id="绘制流程图_Flowchart">绘制流程图 Flowchart</h3><pre><code>```flow
-    st=&gt;start: 用户登陆
-    <span class="keyword">op</span>=&gt;operation: 登陆操作
-    cond=&gt;condition: 登陆成功 <span class="type">Yes</span> or <span class="type">No</span>?
-    e=&gt;<span class="keyword">end</span>: 进入后台
-
-    st-&gt;<span class="keyword">op</span>-&gt;cond
-    cond(yes)-&gt;e
-    cond(no)-&gt;<span class="keyword">op</span>
+st=&gt;start: 用户登陆
+<span class="keyword">op</span>=&gt;operation: 登陆操作
+cond=&gt;condition: 登陆成功 <span class="type">Yes</span> or <span class="type">No</span>?
+e=&gt;<span class="keyword">end</span>: 进入后台
+st-&gt;<span class="keyword">op</span>-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;<span class="keyword">op</span>
 </code></pre><pre><code>
 ----
-
 ```flow
 st=&gt;start: 用户登陆
 <span class="keyword">op</span>=&gt;operation: 登陆操作
@@ -1562,17 +1560,18 @@ cond(yes)-&gt;e
 cond(no)-&gt;<span class="keyword">op</span>
 </code></pre><p>[========]</p>
 <h3 id="绘制序列图_Sequence_Diagram">绘制序列图 Sequence Diagram</h3><pre><code>```seq
-    Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
-    Note <span class="keyword">right</span> of Chin<span class="variable">a:</span> China thinks\nabout it 
-    China--&gt;Andre<span class="variable">w:</span> How are     you? 
-    Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!
+Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
+Note <span class="keyword">right</span> of Chin<span class="variable">a:</span> China thinks\nabout it 
+China--&gt;Andre<span class="variable">w:</span> How are     you? 
+Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!
 </code></pre><pre><code>
-<span class="comment">-----          </span>
+
+<span class="haskell"><span class="comment">-----          </span>
 ```seq
 <span class="type">Andrew</span>-&gt;<span class="type">China</span>: <span class="type">Says</span> <span class="type">Hello</span> 
 <span class="type">Note</span> right <span class="keyword">of</span> <span class="type">China</span>: <span class="type">China</span> thinks\nabout it 
 <span class="type">China</span><span class="comment">--&gt;Andrew: How are you? </span>
-<span class="type">Andrew</span>-&gt;&gt;<span class="type">China</span>: <span class="type">I</span> am good thanks!
+<span class="type">Andrew</span>-&gt;&gt;<span class="type">China</span>: <span class="type">I</span> am good thanks!</span>
 </code></pre><h3 id="End">End</h3>
       
     </div>
