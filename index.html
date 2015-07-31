@@ -191,6 +191,186 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-mango-定制自己的MarkDown编辑器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/31/mango-定制自己的MarkDown编辑器/" class="article-date">
+  	<time datetime="2015-07-30T23:41:18.000Z" itemprop="datePublished">2015-07-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/31/mango-定制自己的MarkDown编辑器/">mango-定制自己的MarkDown编辑器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-hexo-定制自己的博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/31/hexo-定制自己的博客/" class="article-date">
+  	<time datetime="2015-07-30T23:40:35.000Z" itemprop="datePublished">2015-07-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/31/hexo-定制自己的博客/">hexo-定制自己的博客</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Hexo">Hexo</h2><p>一个简单，快速，功能强大的基于Node.js的博客框架，具体介绍可到<a href="https://hexo.io/" target="_blank" rel="external">Hexo主页</a></p>
+<h3 id="Hexo_安装">Hexo 安装</h3><p>Hexo 的安装也十分方便，仅仅依赖与node.js，因此在安装Hexo之前先装好node.js</p>
+<ol>
+<li><p>node.js 的安装</p>
+<ul>
+<li>1.1下载源代码安装</li>
+<li><p>1.2下载编译好的安装包</p>
+<p><a href="https://nodejs.org/" target="_blank" rel="external">Node.js官网</a></p>
+<p>这里安装十分简单，直接解压，然后把路径添加到环境变量就可以了</p>
+</li>
+<li><p>1.3安装成功，运行<code>node --version</code>可以看到</p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/b22967c0-371f-11e5-9ae2-93b21e88a85b.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>Hexo的安装</p>
+<p> <em>网上有很多资料详细说明Hexo的安装和配置过程，这里就不再重复</em></p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install hexo-cli -g</span><br><span class="line"><span class="variable">$ </span>hexo init blog</span><br><span class="line"><span class="variable">$ </span>cd blog</span><br><span class="line"><span class="variable">$ </span>npm install</span><br><span class="line"><span class="variable">$ </span>hexo server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo 的配置</p>
+<p> Hexo的全局配置在<code>_config.yml</code>,部分内容如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">date_format:</span> YYYY-MM-DD</span><br><span class="line"><span class="string">time_format:</span> <span class="string">HH:</span><span class="string">mm:</span>ss</span><br><span class="line"># Pagination</span><br><span class="line">## Set per_page to <span class="number">0</span> to disable pagination	</span><br><span class="line"><span class="string">per_page:</span> <span class="number">10</span></span><br><span class="line"><span class="string">pagination_dir:</span> page</span><br><span class="line"># Extensions</span><br><span class="line">## <span class="string">Plugins:</span> 	<span class="string">http:</span><span class="comment">//hexo.io/plugins/</span></span><br><span class="line"><span class="string">plugins:</span></span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line">## <span class="string">Themes:</span> <span class="string">http:</span><span class="comment">//hexo.io/themes/</span></span><br><span class="line"><span class="string">theme:</span> yilia</span><br><span class="line"># Deployment</span><br><span class="line">## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="label"> 	type:</span> git</span><br><span class="line"><span class="label"> 	repo:</span> git<span class="annotation">@github</span>.<span class="string">com:</span>&#123;your name&#125;/&#123;your name&#125;.github.io.git</span><br><span class="line"><span class="label"> 	branch:</span> master</span><br></pre></td></tr></table></figure>
+<p> 主题的配置在themes目录对应,这里是yilia主题目录下的<code>_config.yml</code></p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor"># Header</span></span><br><span class="line">menu:</span><br><span class="line"> 	主页: /</span><br><span class="line"> 	所有文章: /archives</span><br><span class="line"> 	随笔: /tags/life</span><br><span class="line"> 	工具: /tools</span><br><span class="line"> 	关于: /about</span><br><span class="line"><span class="preprocessor"># SubNav</span></span><br><span class="line">subnav:</span><br><span class="line"> 	github: </span><br><span class="line"> 	weibo: </span><br><span class="line"> 	rss: /atom.xml</span><br><span class="line"> 	#zhihu: <span class="string">"#"</span></span><br><span class="line"> 	#douban: <span class="string">"#"</span></span><br><span class="line"> 	#mail: <span class="string">"#"</span></span><br><span class="line"> 	#facebook: <span class="string">"#"</span></span><br><span class="line"> 	#google: <span class="string">"#"</span></span><br><span class="line"> 	#twitter: <span class="string">"#"</span></span><br><span class="line"> 	#linkedin: <span class="string">"#"</span></span><br><span class="line"></span><br><span class="line">rss: /atom.xml</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Content</span></span><br><span class="line">excerpt_link: more</span><br><span class="line">fancybox: <span class="literal">true</span></span><br><span class="line">mathjax: <span class="literal">true</span></span><br><span class="line"><span class="preprocessor"># 是否开启动画效果</span></span><br><span class="line">animate: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 是否在新窗口打开链接</span></span><br><span class="line">open_in_new: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Miscellaneous</span></span><br><span class="line">google_analytics: UA-<span class="number">56213181</span>-<span class="number">1</span></span><br><span class="line">favicon: /img/logo.jpg</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#你的头像url</span></span><br><span class="line">avatar: /img/logo.jpg</span><br><span class="line"><span class="preprocessor">#是否开启分享</span></span><br><span class="line">share: <span class="literal">false</span></span><br><span class="line"><span class="preprocessor">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></span><br><span class="line"><span class="preprocessor">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></span><br><span class="line">duoshuo: </span><br><span class="line"><span class="preprocessor">#是否开启云标签</span></span><br><span class="line">tagcloud: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#是否开启友情链接</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#friends: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line">friends:</span><br><span class="line"><span class="preprocessor">#是否开启“关于我”。</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#aboutme: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line"><span class="preprocessor">#aboutme:</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo Markdown的渲染定制</p>
+<p> <strong>支持流程图，序列图</strong> </p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo</span>: <span class="string">3.1.1</span></span><br><span class="line"><span class="attribute">os</span>: <span class="string">Linux 2.6.32-358.el6.x86_64 linux x64</span></span><br><span class="line"><span class="attribute">http_parser</span>: <span class="string">2.3</span></span><br><span class="line"><span class="attribute">node</span>: <span class="string">0.12.7</span></span><br><span class="line"><span class="attribute">v8</span>: <span class="string">3.28.71.19</span></span><br><span class="line"><span class="attribute">uv</span>: <span class="string">1.6.1</span></span><br><span class="line"><span class="attribute">zlib</span>: <span class="string">1.2.8</span></span><br><span class="line"><span class="attribute">modules</span>: <span class="string">14</span></span><br><span class="line"><span class="attribute">openssl</span>: <span class="string">1.0.1p</span></span><br></pre></td></tr></table></figure>
+<p> 由上图可只环境的基本概况，当前hexo：3.1.1,支持MathJax,Highlighting,和常用的Markdown语法，但是却不支持流程图，序列图，而实际写作中，有时候图的表示更为直观，故冲动之余，就自己动手实现hexo支持流程图，序列图</p>
+<p> <strong>前提工作</strong>，准备<a href="http://adrai.github.io/flowchart.js/" target="_blank" rel="external">flowchart.js</a>和<a href="http://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="external">sequence.diagram.min.js</a>,分别是在线基于js可以实现流程图和序列图的js插件</p>
+<p> <strong>其次</strong>，将上述js文件及其依赖的js文件拷贝到themes-》source-》js下面，接着在配置文件那里加入如下：</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor">#流程图</span></span><br><span class="line">flowchart: <span class="literal">true</span></span><br><span class="line"><span class="preprocessor">#序列图</span></span><br><span class="line">sequence: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p> 在<code>yilia-&gt;layout-&gt;_partial</code>目录下增加<code>flowchart.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">$(<span class="string">'pre code.flow'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i, block</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> data = block.textContent;</span><br><span class="line">    <span class="comment">//build id</span></span><br><span class="line">    <span class="keyword">var</span> diagram_id = <span class="string">"diagram"</span>+i;</span><br><span class="line">    $(<span class="keyword">this</span>).parent().after(<span class="string">"&lt;div id="</span>+diagram_id+<span class="string">" &gt;&lt;/div&gt;"</span>);</span><br><span class="line">    <span class="keyword">var</span> diagram = flowchart.parse(data);</span><br><span class="line">    diagram.drawSVG(diagram_id);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p> 增加<code>sequence.ejs</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">$(<span class="string">'pre code.seq'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i, block</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> data = block.textContent;</span><br><span class="line">    <span class="comment">//build id</span></span><br><span class="line">    <span class="keyword">var</span> sequence_id = <span class="string">"sequence"</span>+i;</span><br><span class="line">    $(<span class="keyword">this</span>).parent().after(<span class="string">"&lt;div id="</span>+sequence_id+<span class="string">" &gt;&lt;/div&gt;"</span>);</span><br><span class="line">    <span class="keyword">var</span> sequence = Diagram.parse(data);</span><br><span class="line">    sequence.drawSVG(sequence_id,&#123;theme:<span class="string">'simple'</span>&#125;);</span><br><span class="line">&#125;):</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>修改<span class="escape">`h</span>ead.ejs<span class="escape">`,</span>增加下面的内容
+</code></pre><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"/js/raphael-min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/flowchart-latest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/underscore.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/sequence-diagram-min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre><code>修改<span class="escape">`a</span>fter-footer.ejs<span class="escape">`，</span>增加下面的内容
+</code></pre><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">&lt;<span class="preprocessor">%</span> <span class="keyword">if</span> <span class="comment">(theme.flowchart)</span> &#123;<span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span>- partial<span class="comment">('flowchart')</span> <span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span> &#125; <span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span> <span class="keyword">if</span> <span class="comment">(theme.sequence)</span> &#123;<span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span>- partial<span class="comment">('sequence')</span> <span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span> &#125; <span class="preprocessor">%</span>&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>**然后**,最麻烦的就是hexo模块插件里面的代码了，由于要判断`pre code.flow` `pre code.seq`，才能正确生成流程图和序列图，然而只有当配置文件中的`highlight: enable:false`时，才能生成符合要求的样式，因此，highlight高亮时改变了代码的格式，那么highlight何时改变代码的格式呢？这里有两种情况：
+
+    一种是在mark解析markDown语法后，由highlight再进行高亮，高亮的规则就是寻找`pre code`样式的代码块；
+
+    一种就是在mark解析之前，先用highlight解析高亮部分，捕获<span class="comment"><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#9;&#9;&#10;&#9;&#37027;&#20040;hexo&#20351;&#29992;&#30340;&#26159;&#21738;&#31181;&#26041;&#24335;&#21602;&#65311;&#22353;&#29241;&#30340;&#26159;&#65292;&#22312;`hexo-randerer-marked`&#23384;&#22312;highlight&#27169;&#22359;&#65292;&#21487;&#20197;&#29983;&#25104;&#19982;&#30446;&#26631;html&#19968;&#26679;&#30340;&#39640;&#20142;&#20195;&#30721;&#65292;&#35753;&#25105;&#19968;&#24230;&#35748;&#20026;&#23601;&#26159;&#20351;&#29992;&#31532;&#19968;&#31181;&#26041;&#24335;&#28210;&#26579;&#39640;&#20142;&#65307;&#28982;&#32780;&#32654;&#22909;&#32456;&#31350;&#27809;&#26377;&#37027;&#20040;&#24555;&#38477;&#20020;&#65292;&#25152;&#20197;&#19981;&#26029;&#30340;&#36393;&#22353;&#65292;&#19981;&#26029;&#30340;&#35843;&#35797;&#65292;&#21457;&#29616;hexo&#26681;&#26412;&#27809;&#26377;&#35843;&#29992;&#36825;&#27573;&#30340;&#39640;&#20142;&#28210;&#26579;&#20195;&#30721;&#65292;&#26368;&#32456;&#21457;&#29616;&#65292;hexo&#37319;&#29992;&#31532;&#20108;&#31181;&#26041;&#24335;&#28210;&#26579;&#65292;&#21040;&#36798;marked&#35299;&#26512;markDown&#35821;&#27861;&#26102;&#65292;&#39640;&#20142;&#37096;&#20998;&#24050;&#32463;&#34987;&#28210;&#26579;&#20102;&#65292;&#32780;&#28210;&#26579;&#30340;&#27169;&#22359;&#25554;&#20214;&#26159;`hexo-&#62;hexo-util-&#62;highlight.js`&#10;&#9;&#10;&#9;OK&#65292;&#22522;&#26412;&#30340;&#36807;&#31243;&#28165;&#26970;&#20102;&#65292;&#37027;&#20040;&#25105;&#20204;&#23601;&#35201;&#25226;&#27969;&#31243;&#22270;&#21644;&#24207;&#21015;&#22270;&#30340;&#20195;&#30721;&#19981;&#35201;&#32473;highlight&#39640;&#20142;&#65292;&#37027;&#20040;&#22914;&#26524;&#25130;&#26029;&#21602;&#65311;&#10;&#9;&#10;&#9;&#36890;&#36807;&#35843;&#35797;&#21457;&#29616;&#65292;&#22312;`hexo-&#62;lib-&#62;plugins-&#62;filter-&#62;before_post_render`&#19979;&#30340;`back_code_block.js`&#65292;&#22312;&#36825;&#20010;&#25991;&#20214;&#19979;&#28155;&#21152;&#65306;&#10;```javascript&#10;    if(options.lang &#38;&#38; (options.lang === &#34;flow&#34; || options.lang === &#34;seq&#34;))&#10;         return start+ arguments[2]+arguments[3]+&#34;\n&#34;+content+&#34;\n&#34;+arguments[2]+&#34;\n&#34;+end;&#10;    content = highlight(stripIndent(content), options)&#10;      .replace(/&#123;/g, &#39;&#38;#123;&#39;)&#10;      .replace(/&#125;/g, &#39;&#38;#125;&#39;);&#10;    return start + &#39;&#60;escape&#62;&#39; + content + &#39;&#60;/escape&#62;&#39; + (end ? &#39;\n\n&#39; : &#39;&#39;);</span><br></pre></td></tr></table></figure></span>
+
+
+OK,至此大功告成！
+</code></pre><p>测试：</p>
+<p><strong>流程图</strong></p>
+<pre><code>```flow
+st=&gt;start: 用户登陆
+<span class="keyword">op</span>=&gt;operation: 登陆操作
+cond=&gt;condition: 登陆成功 <span class="type">Yes</span> or <span class="type">No</span>?
+e=&gt;<span class="keyword">end</span>: 进入后台
+st-&gt;<span class="keyword">op</span>-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;<span class="keyword">op</span>
+```flow    
+</code></pre><pre><code class="flow">st=&#62;start: &#29992;&#25143;&#30331;&#38470;&#10;op=&#62;operation: &#30331;&#38470;&#25805;&#20316;&#10;cond=&#62;condition: &#30331;&#38470;&#25104;&#21151; Yes or No?&#10;e=&#62;end: &#36827;&#20837;&#21518;&#21488;&#10;st-&#62;op-&#62;cond&#10;cond(yes)-&#62;e&#10;cond(no)-&#62;op
+</code></pre>
+<p><strong>序列图</strong></p>
+<pre><code>```seq
+Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
+Note <span class="keyword">right</span> of Chin<span class="variable">a:</span> China thinks\nabout it 
+China--&gt;Andre<span class="variable">w:</span> How are     you? 
+Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!
+```seq
+</code></pre><pre><code class="seq">Andrew-&#62;China: Says Hello &#10;Note right of China: China thinks\nabout it &#10;China--&#62;Andrew: How are     you? &#10;Andrew-&#62;&#62;China: I am good thanks!
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MarkDown/">MarkDown</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/MarkDown/">MarkDown</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Elementary-Topic02" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
