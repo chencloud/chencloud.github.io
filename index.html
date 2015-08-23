@@ -191,11 +191,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-KaliLinux-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-服务枚举-端口扫描" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/10/KaliLinux-1/" class="article-date">
-  	<time datetime="2015-08-10T00:58:31.000Z" itemprop="datePublished">2015-08-10</time>
+      <a href="/2015/08/23/KaliLinux-服务枚举-端口扫描/" class="article-date">
+  	<time datetime="2015-08-23T01:46:40.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -208,7 +208,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/KaliLinux-1/">KaliLinux-1</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-服务枚举-端口扫描/">KaliLinux-服务枚举-端口扫描</a>
     </h1>
   
 
@@ -217,17 +217,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="KaliLinux配置">KaliLinux配置</h3><p><a href="http://www.cnblogs.com/tk091/p/3667600.html" target="_blank" rel="external">Kali相关配置</a></p>
-<h3 id="KaliLinux的163源">KaliLinux的163源</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-updates main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-backports main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-updates main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-backports main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian-security/ wheezy/updates main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian-security/ wheezy/updates main non-free contrib</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装FALSH">安装FALSH</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">apt-get <span class="operator"><span class="keyword">install</span> flashplugin-nonfree</span><br><span class="line"><span class="keyword">update</span>-flashplugin-nonfree <span class="comment">--install</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="安装拼音">安装拼音</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">apt-get <span class="operator"><span class="keyword">install</span> ibus ibus-pinyin</span><br><span class="line">或者</span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> fcitx fcitx-googlepinyin fcitx-pinyin fcitx-<span class="keyword">module</span>-cloudpinyin</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装iceweasel并且汉化">安装iceweasel并且汉化</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">deb http://mozilla.debian.net/ wheezy-backports iceweasel-<span class="operator"><span class="keyword">release</span></span><br><span class="line">然后在终端执行以下代码</span><br><span class="line"></span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> pkg-mozilla-archive-keyring                                                   #导入PGP <span class="keyword">KEY</span></span><br><span class="line">gpg <span class="comment">--check-sigs --fingerprint --keyring /etc/apt/trusted.gpg.d/pkg-mozilla-archive-keyring.gpg --keyring /usr/share/keyrings/debian-keyring.gpg pkg-mozilla-maintainers            #新建钥匙环</span></span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">update</span> &amp;&amp; apt-<span class="keyword">get</span> <span class="keyword">install</span> -t wheezy-backports iceweasel &amp;&amp; apt-<span class="keyword">get</span> <span class="keyword">install</span> iceweasel-l10n-zh-cn</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装firefox">安装firefox</h3><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">打开终端</span><br><span class="line">第一步：apt-<span class="built_in">get</span> <span class="built_in">remove</span> iceweasel</span><br><span class="line">第二步：</span><br><span class="line"><span class="keyword">echo</span> -<span class="keyword">e</span> <span class="string">"\ndeb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main"</span> | tee -<span class="keyword">a</span> /etc/apt/sources.<span class="keyword">list</span> &gt; /dev/null</span><br><span class="line">第三步：</span><br><span class="line">apt-key adv --recv-<span class="built_in">keys</span> --keyserver keyserver.ubuntu.<span class="keyword">com</span> C1289A29</span><br><span class="line">第四步：</span><br><span class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">第五步</span><br><span class="line">apt-<span class="built_in">get</span> install firefox-mozilla-build</span><br></pre></td></tr></table></figure>
-<h3 id="启动mataexploit">启动mataexploit</h3><figure class="highlight puppet"><table><tr><td class="code"><pre><span class="line"><span class="keyword">service</span> postgresql <span class="literal">start</span></span><br><span class="line"><span class="keyword">service</span> metasploit <span class="literal">start</span></span><br><span class="line"><span class="comment">#检查启动是否成功</span></span><br><span class="line">msf &gt; db_status</span><br></pre></td></tr></table></figure>
-<h3 id="多个命令终端">多个命令终端</h3><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install screen byobu</span><br></pre></td></tr></table></figure>
-<h3 id="启动vpn">启动vpn</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">apt-get <span class="operator"><span class="keyword">install</span> network-manager-openvpn</span><br><span class="line"></span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> network-manager-openvpn-gnome</span><br><span class="line"></span><br><span class="line">下面的命令安装其他vpn类型，大家可以尝试。</span><br><span class="line"></span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> network-manager-pptp network-manager-pptp-gnome network-manager-strongswan network-manager-vpnc network-manager-vpnc-gnome</span></span><br></pre></td></tr></table></figure>
-<p><strong>附上我的软件源</strong><br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"># </span><br><span class="line">#deb <span class="string">http:</span><span class="comment">//security.kali.org/ kali/updates main contrib non-free</span></span><br><span class="line">#deb-src <span class="string">http:</span><span class="comment">//security.kali.org/ kali/updates main contrib non-free</span></span><br><span class="line"></span><br><span class="line">#官方源，如果想安装vmtools，这个源一定要添加</span><br><span class="line">deb <span class="string">http:</span><span class="comment">//http.kali.org/kali kali main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//http.kali.org/kali kali main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//security.kali.org/kali-security kali/updates main contrib non-free</span></span><br><span class="line"></span><br><span class="line">#激进源，新手不推荐使用这个软件源，所以我是新手，也不知道是做什么用的</span><br><span class="line">#deb <span class="string">http:</span><span class="comment">//repo.kali.org/kali kali-bleeding-edge main</span></span><br><span class="line">#deb-src <span class="string">http:</span><span class="comment">//repo.kali.org/kali kali-bleeding-edge main</span></span><br><span class="line"></span><br><span class="line">#中科大kali源</span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/kali kali main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/kali kali main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/kali-security kali/updates main contrib non-free</span></span><br><span class="line"></span><br><span class="line">#阿里云kali源</span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.aliyun.com/kali kali main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.aliyun.com/kali kali main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.aliyun.com/kali-security kali/updates main contrib non-free</span></span><br><span class="line"></span><br><span class="line">#<span class="number">163</span></span><br><span class="line"></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-updates main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-backports main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-updates main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian/ wheezy-backports main non-free contrib</span></span><br><span class="line">deb <span class="string">http:</span><span class="comment">//mirrors.163.com/debian-security/ wheezy/updates main non-free contrib</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//mirrors.163.com/debian-security/ wheezy/updates main non-free contrib</span></span><br></pre></td></tr></table></figure></p>
-
+        
       
     </div>
     
@@ -259,11 +249,11 @@
 
 
   
-    <article id="post-Shell-构建基本脚本-结构化命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-服务枚举-smb枚举" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/Shell-构建基本脚本-结构化命令/" class="article-date">
-  	<time datetime="2015-07-31T12:33:24.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-服务枚举-smb枚举/" class="article-date">
+  	<time datetime="2015-08-23T01:46:09.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -276,7 +266,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/Shell-构建基本脚本-结构化命令/">Shell---构建基本脚本&amp;结构化命令</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-服务枚举-smb枚举/">KaliLinux-服务枚举-smb枚举</a>
     </h1>
   
 
@@ -293,7 +283,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
@@ -317,11 +307,11 @@
 
 
   
-    <article id="post-Shell-基本命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-服务枚举-vpn枚举" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/Shell-基本命令/" class="article-date">
-  	<time datetime="2015-07-31T12:32:06.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-服务枚举-vpn枚举/" class="article-date">
+  	<time datetime="2015-08-23T01:46:00.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -334,7 +324,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/Shell-基本命令/">Shell---基本命令</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-服务枚举-vpn枚举/">KaliLinux-服务枚举-vpn枚举</a>
     </h1>
   
 
@@ -351,7 +341,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
@@ -375,11 +365,11 @@
 
 
   
-    <article id="post-Shell-grep" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-服务枚举-snmp枚举" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/Shell-grep/" class="article-date">
-  	<time datetime="2015-07-31T12:31:55.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-服务枚举-snmp枚举/" class="article-date">
+  	<time datetime="2015-08-23T01:45:53.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -392,7 +382,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/Shell-grep/">Shell---grep</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-服务枚举-snmp枚举/">KaliLinux-服务枚举-snmp枚举</a>
     </h1>
   
 
@@ -409,7 +399,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
@@ -433,11 +423,11 @@
 
 
   
-    <article id="post-Shell-sed" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-服务枚举" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/Shell-sed/" class="article-date">
-  	<time datetime="2015-07-31T12:31:48.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-服务枚举/" class="article-date">
+  	<time datetime="2015-08-23T01:43:30.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -450,7 +440,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/Shell-sed/">Shell---sed</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-服务枚举/">KaliLinux-服务枚举</a>
     </h1>
   
 
@@ -467,7 +457,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
@@ -491,11 +481,11 @@
 
 
   
-    <article id="post-Shell-awk" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-nmap使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/Shell-awk/" class="article-date">
-  	<time datetime="2015-07-31T12:31:42.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-nmap使用/" class="article-date">
+  	<time datetime="2015-08-23T01:42:44.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -508,7 +498,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/Shell-awk/">Shell---awk</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-nmap使用/">KaliLinux-nmap使用</a>
     </h1>
   
 
@@ -525,7 +515,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
@@ -549,11 +539,11 @@
 
 
   
-    <article id="post-Shell-vim-vi" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-目标识别" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/Shell-vim-vi/" class="article-date">
-  	<time datetime="2015-07-31T12:31:16.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-目标识别/" class="article-date">
+  	<time datetime="2015-08-23T01:42:29.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -566,7 +556,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/Shell-vim-vi/">Shell---vim&amp;vi</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-目标识别/">KaliLinux-目标识别</a>
     </h1>
   
 
@@ -583,7 +573,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
@@ -607,11 +597,11 @@
 
 
   
-    <article id="post-mango-定制自己的MarkDown编辑器" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-route信息收集" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/mango-定制自己的MarkDown编辑器/" class="article-date">
-  	<time datetime="2015-07-30T23:41:18.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-route信息收集/" class="article-date">
+  	<time datetime="2015-08-23T01:41:43.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -624,7 +614,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/mango-定制自己的MarkDown编辑器/">mango-定制自己的MarkDown编辑器</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-route信息收集/">KaliLinux-route信息收集</a>
     </h1>
   
 
@@ -633,71 +623,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="mango-MarkDown编辑器">mango-MarkDown编辑器</h2><p>作者介绍：<a href="http://egrcc.github.io/2015/04/12/mango-tutorial/" target="_blank" rel="external">http://egrcc.github.io/2015/04/12/mango-tutorial/</a><br>官网：<a href="https://github.com/egrcc/Mango-dists" target="_blank" rel="external">https://github.com/egrcc/Mango-dists</a></p>
-<ol>
-<li>支持markdown 高亮</li>
-<li>支持MathJax</li>
-<li>运行在nw上</li>
-<li>开源，可定制属于自己的编辑器</li>
-</ol>
-<h3 id="定制自己的编辑器">定制自己的编辑器</h3><ol>
-<li>下载mango源代码</li>
-<li><p>安装nw</p>
-<ul>
-<li><code>npm install nw -g</code></li>
-<li><p>直接到官网下载nw的发行包，解压就好</p>
-<p>本人的系统是centos6.4，在安装nw时遇到各种坑</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">$ ldd nw</span><br><span class="line">./nw: /lib64/libc<span class="class">.so</span>.<span class="number">6</span>: version <span class="string">'GLIBC_2.14'</span> not found (required by ./nw)</span><br><span class="line">./nw: /usr/lib64/libstdc++<span class="class">.so</span>.<span class="number">6</span>: version <span class="string">'GLIBCXX_3.4.15'</span> not found (required by ./nw)</span><br><span class="line">./nw: /usr/lib64/libnss3<span class="class">.so</span>: version <span class="string">'NSS_3.14.3'</span> not found (required by ./nw)</span><br><span class="line">	linux-vdso<span class="class">.so</span>.<span class="number">1</span> =&gt;  (<span class="number">0</span>x00007fff1ba97000)</span><br><span class="line">	librt<span class="class">.so</span>.<span class="number">1</span> =&gt; /lib64/librt<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039d7a00000)</span><br><span class="line">	libdl<span class="class">.so</span>.<span class="number">2</span> =&gt; /lib64/libdl<span class="class">.so</span>.<span class="number">2</span> (<span class="number">0</span>x00000039d6600000)</span><br><span class="line">	libm<span class="class">.so</span>.<span class="number">6</span> =&gt; /lib64/libm<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00000039d7200000)</span><br><span class="line">	libgobject-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /lib64/libgobject-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039d8600000)</span><br><span class="line">	libglib-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /lib64/libglib-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039d7600000)</span><br><span class="line">	libnss3<span class="class">.so</span> =&gt; /usr/lib64/libnss3<span class="class">.so</span> (<span class="number">0</span>x00000039e7600000)</span><br><span class="line">	libnssutil3<span class="class">.so</span> =&gt; /usr/lib64/libnssutil3<span class="class">.so</span> (<span class="number">0</span>x00000039e6200000)</span><br><span class="line">	libsmime3<span class="class">.so</span> =&gt; /usr/lib64/libsmime3<span class="class">.so</span> (<span class="number">0</span>x00000039e7e00000)</span><br><span class="line">	libplc4<span class="class">.so</span> =&gt; /lib64/libplc4<span class="class">.so</span> (<span class="number">0</span>x00000039e6600000)</span><br><span class="line">	libnspr4<span class="class">.so</span> =&gt; /lib64/libnspr4<span class="class">.so</span> (<span class="number">0</span>x00000039e5200000)</span><br><span class="line">	libgconf-<span class="number">2</span><span class="class">.so</span>.<span class="number">4</span> =&gt; /usr/lib64/libgconf-<span class="number">2</span><span class="class">.so</span>.<span class="number">4</span> (<span class="number">0</span>x00000039e0e00000)</span><br><span class="line">	libgio-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /lib64/libgio-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x0000003e72000000)</span><br><span class="line">	libfontconfig<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libfontconfig<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x0000003ece800000)</span><br><span class="line">	libfreetype<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libfreetype<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x0000003ece400000)</span><br><span class="line">	libpangocairo-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libpangocairo-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x0000003ecf400000)</span><br><span class="line">	libcairo<span class="class">.so</span>.<span class="number">2</span> =&gt; /usr/lib64/libcairo<span class="class">.so</span>.<span class="number">2</span> (<span class="number">0</span>x0000003ed0000000)</span><br><span class="line">	libpango-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libpango-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039e0200000)</span><br><span class="line">	libX11<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libX11<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00000039da600000)</span><br><span class="line">	libXi<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libXi<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00000039dc600000)</span><br><span class="line">	libXcursor<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libXcursor<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x0000003ecec00000)</span><br><span class="line">	libXext<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libXext<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00000039dae00000)</span><br><span class="line">	libXfixes<span class="class">.so</span>.<span class="number">3</span> =&gt; /usr/lib64/libXfixes<span class="class">.so</span>.<span class="number">3</span> (<span class="number">0</span>x00000039dfa00000)</span><br><span class="line">	libXrender<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libXrender<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039dc200000)</span><br><span class="line">	libXcomposite<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libXcomposite<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039e0600000)</span><br><span class="line">	libasound<span class="class">.so</span>.<span class="number">2</span> =&gt; /lib64/libasound<span class="class">.so</span>.<span class="number">2</span> (<span class="number">0</span>x00000039dda00000)</span><br><span class="line">	libXdamage<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libXdamage<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039dee00000)</span><br><span class="line">	libXtst<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libXtst<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00007f508f9d0000)</span><br><span class="line">	libXrandr<span class="class">.so</span>.<span class="number">2</span> =&gt; /usr/lib64/libXrandr<span class="class">.so</span>.<span class="number">2</span> (<span class="number">0</span>x00000039dce00000)</span><br><span class="line">	libexpat<span class="class">.so</span>.<span class="number">1</span> =&gt; /lib64/libexpat<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039db600000)</span><br><span class="line">	libdbus-<span class="number">1</span><span class="class">.so</span>.<span class="number">3</span> =&gt; /lib64/libdbus-<span class="number">1</span><span class="class">.so</span>.<span class="number">3</span> (<span class="number">0</span>x00000039d8a00000)</span><br><span class="line">	libpthread<span class="class">.so</span>.<span class="number">0</span> =&gt; /lib64/libpthread<span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039d6e00000)</span><br><span class="line">	libgtk-x11-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libgtk-x11-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x0000003e72400000)</span><br><span class="line">	libgdk-x11-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libgdk-x11-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x0000003e73000000)</span><br><span class="line">	libgdk_pixbuf-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libgdk_pixbuf-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x0000003e72c00000)</span><br><span class="line">	libnotify<span class="class">.so</span>.<span class="number">4</span> =&gt; not found</span><br><span class="line">	libstdc++<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libstdc++<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x0000003e73c00000)</span><br><span class="line">	libgcc_s<span class="class">.so</span>.<span class="number">1</span> =&gt; /lib64/libgcc_s<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x0000003e73800000)</span><br><span class="line">	libc<span class="class">.so</span>.<span class="number">6</span> =&gt; /lib64/libc<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00000039d6a00000)</span><br><span class="line">	/lib64/ld-linux-x86-<span class="number">64</span><span class="class">.so</span>.<span class="number">2</span> (<span class="number">0</span>x00000039d6200000)</span><br><span class="line">	libplds4<span class="class">.so</span> =&gt; /lib64/libplds4<span class="class">.so</span> (<span class="number">0</span>x00000039e6e00000)</span><br><span class="line">	libgmodule-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /lib64/libgmodule-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039d9200000)</span><br><span class="line">	libORBit-<span class="number">2</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libORBit-<span class="number">2</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00007f508f75b000)</span><br><span class="line">	libresolv<span class="class">.so</span>.<span class="number">2</span> =&gt; /lib64/libresolv<span class="class">.so</span>.<span class="number">2</span> (<span class="number">0</span>x00000039d8e00000)</span><br><span class="line">	libselinux<span class="class">.so</span>.<span class="number">1</span> =&gt; /lib64/libselinux<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x0000003e71c00000)</span><br><span class="line">	libpangoft2-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libpangoft2-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x0000003ed0400000)</span><br><span class="line">	libpixman-<span class="number">1</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libpixman-<span class="number">1</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039dfe00000)</span><br><span class="line">	libpng12<span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libpng12<span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039db200000)</span><br><span class="line">	libz<span class="class">.so</span>.<span class="number">1</span> =&gt; /lib64/libz<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039d8200000)</span><br><span class="line">	libxcb<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libxcb<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039d9e00000)</span><br><span class="line">	libatk-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /usr/lib64/libatk-<span class="number">1.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039de600000)</span><br><span class="line">	libXinerama<span class="class">.so</span>.<span class="number">1</span> =&gt; /usr/lib64/libXinerama<span class="class">.so</span>.<span class="number">1</span> (<span class="number">0</span>x00000039df200000)</span><br><span class="line">	libgthread-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> =&gt; /lib64/libgthread-<span class="number">2.0</span><span class="class">.so</span>.<span class="number">0</span> (<span class="number">0</span>x00000039d9600000)</span><br><span class="line">	libXau<span class="class">.so</span>.<span class="number">6</span> =&gt; /usr/lib64/libXau<span class="class">.so</span>.<span class="number">6</span> (<span class="number">0</span>x00000039da200000)</span><br></pre></td></tr></table></figure>
-<p>直接启动<code>./nw</code>的话，会出现</p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">./nw: <span class="keyword">error</span> <span class="keyword">while</span> loading shared libraries: libnotify.<span class="keyword">so</span>.4: cannot <span class="keyword">open</span> shared object <span class="keyword">file</span>: <span class="keyword">No</span> such <span class="keyword">file</span> or directory</span><br></pre></td></tr></table></figure>
-<p>解决方案就是<strong>缺什么，补什么</strong>        </p>
-</li>
-</ul>
-</li>
-<li><p>libnotify.so.4解决</p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">ls</span> /usr/lib64/|grep libnotify</span><br><span class="line">libnotify.<span class="keyword">so</span>.1</span><br><span class="line">libnotify.<span class="keyword">so</span>.1.2.3</span><br><span class="line">$ <span class="keyword">cd</span> /usr/lib64/</span><br><span class="line">$ sudo ln -s libnotify.<span class="keyword">so</span>.1  libnotify.<span class="keyword">so</span>.4</span><br><span class="line">$ <span class="keyword">ls</span> -<span class="keyword">l</span> /usr/lib64 |grep libnotify</span><br><span class="line">lrwxrwxrwx.  1 root root       18 Mar 12 05:53 libnotify.<span class="keyword">so</span>.1 -&gt; libnotify.<span class="keyword">so</span>.1.2.3</span><br><span class="line">-rwxr-xr-x.  1 root root    40272 Nov 12  2010 libnotify.<span class="keyword">so</span>.1.2.3</span><br><span class="line">lrwxrwxrwx.  1 root root       14 Jul 23 15:17 libnotify.<span class="keyword">so</span>.4 -&gt; libnotify.<span class="keyword">so</span>.1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GLIBC_2.14’ not found解决</p>
-<p> 可以参考<a href="http://doudouclever.blog.163.com/blog/static/1751123102014112963416312/" target="_blank" rel="external">CentOS “/lib64/libc.so.6: version `GLIBC_2.14′ not found”系统glibc版本太低  </a></p>
-</li>
-<li><p>/usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.15’<br> 下载libstdc++6_4.7.2-5_amd64.deb，解压得到新的libstdc++.so.6,并拷贝到/usr/lib64/下,重新创建链接，结果如下</p>
- <figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">ls</span> -<span class="keyword">l</span> /usr/lib64 |grep libnotify</span><br><span class="line">lrwxrwxrwx.  1 root root       18 Mar 12 05:53 libnotify.<span class="keyword">so</span>.1 -&gt; libnotify.<span class="keyword">so</span>.1.2.3</span><br><span class="line">-rwxr-xr-x.  1 root root    40272 Nov 12  2010 libnotify.<span class="keyword">so</span>.1.2.3</span><br><span class="line">lrwxrwxrwx.  1 root root       14 Jul 23 15:17 libnotify.<span class="keyword">so</span>.4 -&gt; libnotify.<span class="keyword">so</span>.1</span><br><span class="line">[hadoop@master lib]$ <span class="keyword">ls</span> -<span class="keyword">l</span> /usr/lib64 |grep libstdc++</span><br><span class="line">lrwxrwxrwx.  1 root root       19 Jul 23 16:43 libstdc++.<span class="keyword">so</span>.6 -&gt; libstdc++.<span class="keyword">so</span>.6.0.17</span><br><span class="line">-rwxr-xr-x.  1 root root   989840 Oct 15  2014 libstdc++.<span class="keyword">so</span>.6.0.13</span><br><span class="line">-rwxr-xr-x.  1 root root   994408 Jul 23 16:41 libstdc++.<span class="keyword">so</span>.6.0.17</span><br><span class="line">lrwxrwxrwx.  1 root root       19 Mar 22 21:00 libstdc++.<span class="keyword">so</span>.6.bak -&gt; libstdc++.<span class="keyword">so</span>.6.0.13</span><br></pre></td></tr></table></figure>
- <figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">$ strings /usr/lib64/libstdc++.<span class="keyword">so</span>.<span class="number">6</span>|<span class="keyword">grep</span> GLIBC</span><br><span class="line">GLIBCXX_3.<span class="number">4</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.1</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.2</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.3</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.4</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.5</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.6</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.7</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.8</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.9</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.10</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.11</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.12</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.13</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.14</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.15</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.16</span></span><br><span class="line">GLIBCXX_3.<span class="number">4.17</span></span><br><span class="line">GLIBC_2.<span class="number">2.5</span></span><br><span class="line">GLIBC_2.<span class="number">3</span></span><br><span class="line">GLIBC_2.<span class="number">3.2</span></span><br><span class="line">GLIBCXX_DEBUG_MESSAGE_LENGTH</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>libnss3.so解决</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum <span class="keyword">install</span> nss.x86_64</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>undefined symbol: gtk_offscreen_window_new解决</p>
-<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">yum update gtk2<span class="keyword">*</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>至此，应该可以启动nw了</p>
-</li>
-<li><p>切换mango目录下，执行<code>npm install</code>安装mango</p>
-</li>
-<li><p>安装完成后，执行<code>nw .</code>,没错的话，可以看到mango的编辑界面了<br><img src="http://7xkkkb.com1.z0.glb.clouddn.com/4298ac30-373e-11e5-9bd0-35ab97ee1296.png" alt=""></p>
-</li>
-<li>扩展支持直接复制图片，上传到七牛，返回markdown的链接<br>该功能已由我师弟实现，具体见：<a href="https://github.com/dcycome/Mango" target="_blank" rel="external">https://github.com/dcycome/Mango</a></li>
-<li><p>扩展mango,支持流程图和序列图</p>
-<ul>
-<li>需要的工具，可以看：<a href="http://jaye.needpp.com/2015/07/31/hexo-%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">hexo-定制自己的博客</a></li>
-<li>将相关的js文件复制到<code>\js</code>目录下</li>
-<li><p>修改index.html,在<code>&lt;head&gt;&lt;/head&gt;</code>内增加下面的内容</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"./js/raphael-min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"./js/underscore.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"./js/flowchart-latest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"./js/sequence-diagram-min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改editor.js</p>
-<figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">preview</span><span class="params">()</span>&#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="params">(lock == <span class="literal">false</span>)</span>&#123;</span><br><span class="line">	lock = <span class="literal">true</span>;</span><br><span class="line">	setTimeout<span class="params">(function<span class="params">()</span>&#123;</span><br><span class="line">		var path = require<span class="params">('path')</span>;</span><br><span class="line">		var resultDiv = global.$<span class="params">('.md_result')</span>;</span><br><span class="line"></span><br><span class="line">		if <span class="params">(currentDirectory != null)</span> &#123;</span><br><span class="line">			$<span class="params">(<span class="string">"#buffer img"</span>)</span>.each<span class="params">(function<span class="params">()</span> &#123;</span><br><span class="line">			    // console.log<span class="params">(global.$<span class="params">(this)</span>.attr<span class="params">(<span class="string">"src"</span>)</span>)</span>;</span><br><span class="line">			    // console.log<span class="params">(path.basename<span class="params">(global.$<span class="params">(this)</span>.attr<span class="params">(<span class="string">"src"</span>)</span>)</span>)</span>;</span><br><span class="line">			    if <span class="params">(global.$<span class="params">(this)</span>.attr<span class="params">(<span class="string">"src"</span>)</span>.indexOf<span class="params">('.')</span> == <span class="number">0</span>)</span> &#123;</span><br><span class="line">			    	filePath = global.$<span class="params">(this)</span>.attr<span class="params">(<span class="string">"src"</span>)</span>.substring<span class="params">(<span class="number">1</span>)</span>;</span><br><span class="line">			    	console.log<span class="params">(currentDirectory + filePath)</span>;</span><br><span class="line">			    	global.$<span class="params">(this)</span>.attr<span class="params">(<span class="string">"src"</span>, currentDirectory + filePath)</span>;</span><br><span class="line">			    &#125;</span><br><span class="line">			&#125;)</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		resultDiv.html<span class="params">(buffer.innerHTML)</span>;</span><br><span class="line">		resultDiv.find<span class="params">(<span class="string">"pre code.lang-flow"</span>)</span>.each<span class="params">(function<span class="params">(i,block)</span> &#123;</span><br><span class="line">   				var data = block.textContent;</span><br><span class="line">   				//build id</span><br><span class="line">   				var diagram_id = <span class="string">"diagram"</span>+i;</span><br><span class="line">   				$<span class="params">(this)</span>.parent<span class="params">()</span>.after<span class="params">(<span class="string">"&lt;div id="</span>+diagram_id+<span class="string">" &gt;&lt;/div&gt;"</span>)</span>;</span><br><span class="line">   				var diagram = flowchart.parse<span class="params">(data)</span>;</span><br><span class="line">   				diagram.drawSVG<span class="params">(diagram_id)</span>;</span><br><span class="line">			$<span class="params">(this)</span>.parent<span class="params">()</span>.hide<span class="params">()</span>;</span><br><span class="line">		&#125;)</span>;</span><br><span class="line">		resultDiv.find<span class="params">(<span class="string">"pre code.lang-seq"</span>)</span>.each<span class="params">(function<span class="params">(i,block)</span> &#123;</span><br><span class="line">		    var data = block.textContent;</span><br><span class="line">		    //build id</span><br><span class="line">		    var sequence_id = <span class="string">"sequence"</span>+i;</span><br><span class="line">		    $<span class="params">(this)</span>.parent<span class="params">()</span>.after<span class="params">(<span class="string">"&lt;div id="</span>+sequence_id+<span class="string">" &gt;&lt;/div&gt;"</span>)</span>;</span><br><span class="line">		    var sequence = Diagram.parse<span class="params">(data)</span>;</span><br><span class="line">		    sequence.drawSVG<span class="params">(sequence_id,&#123;theme:'simple'&#125;)</span>;</span><br><span class="line">		    $<span class="params">(this)</span>.parent<span class="params">()</span>.hide<span class="params">()</span>;	</span><br><span class="line">		&#125;)</span>;</span><br><span class="line">		lock = <span class="literal">false</span>;</span><br><span class="line">		&#125;, <span class="number">300</span>)</span>;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改highlight.js,增加<code>if(n ==&#39;flow&#39; ||n==&#39;seq&#39;)return;</code></p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">function p(<span class="keyword">e</span>)&#123;<span class="keyword">var</span> <span class="keyword">n</span>=a(<span class="keyword">e</span>);<span class="keyword">if</span>(<span class="keyword">n</span> =='flow' ||<span class="keyword">n</span>=='seq')<span class="keyword">return</span>;<span class="keyword">if</span>(!/<span class="keyword">no</span>(-?)highlight|plain|text/.<span class="keyword">test</span>(<span class="keyword">n</span>))&#123;<span class="keyword">var</span> t;x.useBR?(t=document.createElementNS(<span class="string">"http://www.w3.org/1999/xhtml"</span>,<span class="string">"div"</span>),t.innerHTML=<span class="keyword">e</span>.innerHTML.<span class="keyword">replace</span>(/\<span class="keyword">n</span>/<span class="keyword">g</span>,<span class="string">""</span>).<span class="keyword">replace</span>(/&lt;<span class="keyword">br</span>[ \/]*&gt;/<span class="keyword">g</span>,<span class="string">"\n"</span>)):t=<span class="keyword">e</span>;<span class="keyword">var</span> r=t.textContent,i=<span class="keyword">n</span>?<span class="literal">s</span>(<span class="keyword">n</span>,r,!0):<span class="keyword">l</span>(r),c=o(t);<span class="keyword">if</span>(c.length)&#123;<span class="keyword">var</span> p=document.createElementNS(<span class="string">"http://www.w3.org/1999/xhtml"</span>,<span class="string">"div"</span>);p.innerHTML=i.value,i.value=<span class="keyword">u</span>(c,o(p),r)&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>搞定</p>
-</li>
-</ul>
-<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/63b70990-3741-11e5-9bd0-35ab97ee1296.png" alt=""></p>
-<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/894e4c40-3741-11e5-9bd0-35ab97ee1296.png" alt=""></p>
-</li>
-</ol>
-<h3 id="End">End</h3>
+        
       
     </div>
     
@@ -705,12 +631,12 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MarkDown/">MarkDown</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/MarkDown/">MarkDown</a>
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
 	</div>
 
 
@@ -729,11 +655,11 @@
 
 
   
-    <article id="post-hexo-定制自己的博客" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KaliLinux-dns信息收集" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/31/hexo-定制自己的博客/" class="article-date">
-  	<time datetime="2015-07-30T23:40:35.000Z" itemprop="datePublished">2015-07-31</time>
+      <a href="/2015/08/23/KaliLinux-dns信息收集/" class="article-date">
+  	<time datetime="2015-08-23T01:40:29.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -746,7 +672,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/31/hexo-定制自己的博客/">hexo-定制自己的博客</a>
+      <a class="article-title" href="/2015/08/23/KaliLinux-dns信息收集/">KaliLinux-dns信息收集</a>
     </h1>
   
 
@@ -755,77 +681,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hexo">Hexo</h2><p>一个简单，快速，功能强大的基于Node.js的博客框架，具体介绍可到<a href="https://hexo.io/" target="_blank" rel="external">Hexo主页</a></p>
-<h3 id="Hexo_安装">Hexo 安装</h3><p>Hexo 的安装也十分方便，仅仅依赖与node.js，因此在安装Hexo之前先装好node.js</p>
-<ol>
-<li><p>node.js 的安装</p>
-<ul>
-<li>1.1下载源代码安装</li>
-<li><p>1.2下载编译好的安装包</p>
-<p><a href="https://nodejs.org/" target="_blank" rel="external">Node.js官网</a></p>
-<p>这里安装十分简单，直接解压，然后把路径添加到环境变量就可以了</p>
-</li>
-<li><p>1.3安装成功，运行<code>node --version</code>可以看到</p>
-<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/b22967c0-371f-11e5-9ae2-93b21e88a85b.png" alt=""></p>
-</li>
-</ul>
-</li>
-<li><p>Hexo的安装</p>
-<p> <em>网上有很多资料详细说明Hexo的安装和配置过程，这里就不再重复</em></p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install hexo-cli -g</span><br><span class="line"><span class="variable">$ </span>hexo init blog</span><br><span class="line"><span class="variable">$ </span>cd blog</span><br><span class="line"><span class="variable">$ </span>npm install</span><br><span class="line"><span class="variable">$ </span>hexo server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Hexo 的配置</p>
-<p> Hexo的全局配置在<code>_config.yml</code>,部分内容如下：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="string">date_format:</span> YYYY-MM-DD</span><br><span class="line"><span class="string">time_format:</span> <span class="string">HH:</span><span class="string">mm:</span>ss</span><br><span class="line"># Pagination</span><br><span class="line">## Set per_page to <span class="number">0</span> to disable pagination	</span><br><span class="line"><span class="string">per_page:</span> <span class="number">10</span></span><br><span class="line"><span class="string">pagination_dir:</span> page</span><br><span class="line"># Extensions</span><br><span class="line">## <span class="string">Plugins:</span> 	<span class="string">http:</span><span class="comment">//hexo.io/plugins/</span></span><br><span class="line"><span class="string">plugins:</span></span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line">## <span class="string">Themes:</span> <span class="string">http:</span><span class="comment">//hexo.io/themes/</span></span><br><span class="line"><span class="string">theme:</span> yilia</span><br><span class="line"># Deployment</span><br><span class="line">## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="label"> 	type:</span> git</span><br><span class="line"><span class="label"> 	repo:</span> git<span class="annotation">@github</span>.<span class="string">com:</span>&#123;your name&#125;/&#123;your name&#125;.github.io.git</span><br><span class="line"><span class="label"> 	branch:</span> master</span><br></pre></td></tr></table></figure>
-<p> 主题的配置在themes目录对应,这里是yilia主题目录下的<code>_config.yml</code></p>
-<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor"># Header</span></span><br><span class="line">menu:</span><br><span class="line"> 	主页: /</span><br><span class="line"> 	所有文章: /archives</span><br><span class="line"> 	随笔: /tags/life</span><br><span class="line"> 	工具: /tools</span><br><span class="line"> 	关于: /about</span><br><span class="line"><span class="preprocessor"># SubNav</span></span><br><span class="line">subnav:</span><br><span class="line"> 	github: </span><br><span class="line"> 	weibo: </span><br><span class="line"> 	rss: /atom.xml</span><br><span class="line"> 	#zhihu: <span class="string">"#"</span></span><br><span class="line"> 	#douban: <span class="string">"#"</span></span><br><span class="line"> 	#mail: <span class="string">"#"</span></span><br><span class="line"> 	#facebook: <span class="string">"#"</span></span><br><span class="line"> 	#google: <span class="string">"#"</span></span><br><span class="line"> 	#twitter: <span class="string">"#"</span></span><br><span class="line"> 	#linkedin: <span class="string">"#"</span></span><br><span class="line"></span><br><span class="line">rss: /atom.xml</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Content</span></span><br><span class="line">excerpt_link: more</span><br><span class="line">fancybox: <span class="literal">true</span></span><br><span class="line">mathjax: <span class="literal">true</span></span><br><span class="line"><span class="preprocessor"># 是否开启动画效果</span></span><br><span class="line">animate: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># 是否在新窗口打开链接</span></span><br><span class="line">open_in_new: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Miscellaneous</span></span><br><span class="line">google_analytics: UA-<span class="number">56213181</span>-<span class="number">1</span></span><br><span class="line">favicon: /img/logo.jpg</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#你的头像url</span></span><br><span class="line">avatar: /img/logo.jpg</span><br><span class="line"><span class="preprocessor">#是否开启分享</span></span><br><span class="line">share: <span class="literal">false</span></span><br><span class="line"><span class="preprocessor">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></span><br><span class="line"><span class="preprocessor">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></span><br><span class="line">duoshuo: </span><br><span class="line"><span class="preprocessor">#是否开启云标签</span></span><br><span class="line">tagcloud: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#是否开启友情链接</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#friends: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line">friends:</span><br><span class="line"><span class="preprocessor">#是否开启“关于我”。</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#aboutme: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line"><span class="preprocessor">#aboutme:</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Hexo Markdown的渲染定制</p>
-<p> <strong>支持流程图，序列图</strong> </p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo</span>: <span class="string">3.1.1</span></span><br><span class="line"><span class="attribute">os</span>: <span class="string">Linux 2.6.32-358.el6.x86_64 linux x64</span></span><br><span class="line"><span class="attribute">http_parser</span>: <span class="string">2.3</span></span><br><span class="line"><span class="attribute">node</span>: <span class="string">0.12.7</span></span><br><span class="line"><span class="attribute">v8</span>: <span class="string">3.28.71.19</span></span><br><span class="line"><span class="attribute">uv</span>: <span class="string">1.6.1</span></span><br><span class="line"><span class="attribute">zlib</span>: <span class="string">1.2.8</span></span><br><span class="line"><span class="attribute">modules</span>: <span class="string">14</span></span><br><span class="line"><span class="attribute">openssl</span>: <span class="string">1.0.1p</span></span><br></pre></td></tr></table></figure>
-<p> 由上图可只环境的基本概况，当前hexo：3.1.1,支持MathJax,Highlighting,和常用的Markdown语法，但是却不支持流程图，序列图，而实际写作中，有时候图的表示更为直观，故冲动之余，就自己动手实现hexo支持流程图，序列图</p>
-<p> <strong>前提工作</strong>，准备<a href="http://adrai.github.io/flowchart.js/" target="_blank" rel="external">flowchart.js</a>和<a href="http://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="external">sequence.diagram.min.js</a>,分别是在线基于js可以实现流程图和序列图的js插件</p>
-<p> <strong>其次</strong>，将上述js文件及其依赖的js文件拷贝到themes-》source-》js下面，接着在配置文件那里加入如下：</p>
-<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor">#流程图</span></span><br><span class="line">flowchart: <span class="literal">true</span></span><br><span class="line"><span class="preprocessor">#序列图</span></span><br><span class="line">sequence: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p> 在<code>yilia-&gt;layout-&gt;_partial</code>目录下增加<code>flowchart.ejs</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">$(<span class="string">'pre code.flow'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i, block</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> data = block.textContent;</span><br><span class="line">    <span class="comment">//build id</span></span><br><span class="line">    <span class="keyword">var</span> diagram_id = <span class="string">"diagram"</span>+i;</span><br><span class="line">    $(<span class="keyword">this</span>).parent().after(<span class="string">"&lt;div id="</span>+diagram_id+<span class="string">" &gt;&lt;/div&gt;"</span>);</span><br><span class="line">    <span class="keyword">var</span> diagram = flowchart.parse(data);</span><br><span class="line">    diagram.drawSVG(diagram_id);</span><br><span class="line">    $(<span class="keyword">this</span>).parent().hide()</span><br><span class="line">&#125;);</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p> 增加<code>sequence.ejs</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">$(<span class="string">'pre code.seq'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i, block</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> data = block.textContent;</span><br><span class="line">    <span class="comment">//build id</span></span><br><span class="line">    <span class="keyword">var</span> sequence_id = <span class="string">"sequence"</span>+i;</span><br><span class="line">    $(<span class="keyword">this</span>).parent().after(<span class="string">"&lt;div id="</span>+sequence_id+<span class="string">" &gt;&lt;/div&gt;"</span>);</span><br><span class="line">    <span class="keyword">var</span> sequence = Diagram.parse(data);</span><br><span class="line">    sequence.drawSVG(sequence_id,&#123;theme:<span class="string">'simple'</span>&#125;);</span><br><span class="line">    $(<span class="keyword">this</span>).parent().hide()</span><br><span class="line">&#125;):</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p> 修改<code>head.ejs</code>,增加下面的内容</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"/js/raphael-min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/flowchart-latest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/underscore.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"/js/sequence-diagram-min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p> 修改<code>after-footer.ejs</code>，增加下面的内容</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">&lt;<span class="preprocessor">%</span> <span class="keyword">if</span> <span class="comment">(theme.flowchart)</span> &#123;<span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span>- partial<span class="comment">('flowchart')</span> <span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span> &#125; <span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span> <span class="keyword">if</span> <span class="comment">(theme.sequence)</span> &#123;<span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span>- partial<span class="comment">('sequence')</span> <span class="preprocessor">%</span>&gt;</span><br><span class="line">&lt;<span class="preprocessor">%</span> &#125; <span class="preprocessor">%</span>&gt;</span><br></pre></td></tr></table></figure>
-<p> <strong>然后</strong>,最麻烦的就是hexo模块插件里面的代码了，由于要判断<code>pre code.flow</code> <code>pre code.seq</code>，才能正确生成流程图和序列图，然而只有当配置文件中的<code>highlight: enable:false</code>时，才能生成符合要求的样式，因此，highlight高亮时改变了代码的格式，那么highlight何时改变代码的格式呢？这里有两种情况：一种是在mark解析markDown语法后，由highlight再进行高亮，高亮的规则就是寻找<code>pre code</code>样式的代码块；一种就是在mark解析之前，先用highlight解析高亮部分，捕获代码块开头的markDown语法；    </p>
-<p> 那么hexo使用的是哪种方式呢？坑爹的是，在<code>hexo-randerer-marked</code>存在highlight模块，可以生成与目标html一样的高亮代码，让我一度认为就是使用第一种方式渲染高亮；然而美好终究没有那么快降临，所以不断的踩坑，不断的调试，发现hexo根本没有调用这段的高亮渲染代码，最终发现，hexo采用第二种方式渲染，到达marked解析markDown语法时，高亮部分已经被渲染了，而渲染的模块插件是<code>hexo-&gt;hexo-util-&gt;highlight.js</code></p>
-<p> OK，基本的过程清楚了，那么我们就要把流程图和序列图的代码不要给highlight高亮，那么如果截断呢？</p>
-<p> 通过调试发现，在<code>hexo-&gt;lib-&gt;plugins-&gt;filter-&gt;before_post_render</code>下的<code>back_code_block.js</code>，在这个文件下添加：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(options.lang &amp;&amp; (options.lang === <span class="string">"flow"</span> || options.lang === <span class="string">"seq"</span>))</span><br><span class="line">     <span class="keyword">return</span> start+ <span class="built_in">arguments</span>[<span class="number">2</span>]+<span class="built_in">arguments</span>[<span class="number">3</span>]+<span class="string">"\n"</span>+content+<span class="string">"\n"</span>+<span class="built_in">arguments</span>[<span class="number">2</span>]+<span class="string">"\n"</span>+end;</span><br><span class="line">content = highlight(stripIndent(content), options)</span><br><span class="line">  .replace(<span class="regexp">/&#123;/g</span>, <span class="string">'&amp;#123;'</span>)</span><br><span class="line">  .replace(<span class="regexp">/&#125;/g</span>, <span class="string">'&amp;#125;'</span>);</span><br><span class="line"><span class="keyword">return</span> start + <span class="string">'&lt;escape&gt;'</span> + content + <span class="string">'&lt;/escape&gt;'</span> + (end ? <span class="string">'\n\n'</span> : <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<pre><code>OK,至此大功告成！
-</code></pre><p>测试：</p>
-<p><strong>流程图</strong></p>
-<pre><code>```flow
-st=&gt;start: 用户登陆
-<span class="keyword">op</span>=&gt;operation: 登陆操作
-cond=&gt;condition: 登陆成功 <span class="type">Yes</span> or <span class="type">No</span>?
-e=&gt;<span class="keyword">end</span>: 进入后台
-st-&gt;<span class="keyword">op</span>-&gt;cond
-cond(yes)-&gt;e
-cond(no)-&gt;<span class="keyword">op</span>
-```flow    
-</code></pre><pre><code class="flow">st=&#62;start: &#29992;&#25143;&#30331;&#38470;&#10;op=&#62;operation: &#30331;&#38470;&#25805;&#20316;&#10;cond=&#62;condition: &#30331;&#38470;&#25104;&#21151; Yes or No?&#10;e=&#62;end: &#36827;&#20837;&#21518;&#21488;&#10;st-&#62;op-&#62;cond&#10;cond(yes)-&#62;e&#10;cond(no)-&#62;op
-</code></pre>
-<p><strong>序列图</strong></p>
-<pre><code>```seq
-Andrew-&gt;Chin<span class="variable">a:</span> Says Hello 
-Note <span class="keyword">right</span> of Chin<span class="variable">a:</span> China thinks\nabout it 
-China--&gt;Andre<span class="variable">w:</span> How are     you? 
-Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</span> good thanks!
-```seq
-</code></pre><pre><code class="seq">Andrew-&#62;China: Says Hello &#10;Note right of China: China thinks\nabout it &#10;China--&#62;Andrew: How are     you? &#10;Andrew-&#62;&#62;China: I am good thanks!
-</code></pre>
-
+        
       
     </div>
     
@@ -833,12 +689,12 @@ Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MarkDown/">MarkDown</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/MarkDown/">MarkDown</a>
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
 	</div>
 
 
@@ -857,11 +713,11 @@ Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</
 
 
   
-    <article id="post-Elementary-Topic02" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-KiliLinux-ettercap-dns-arp欺骗" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/29/Elementary-Topic02/" class="article-date">
-  	<time datetime="2015-07-29T02:26:00.000Z" itemprop="datePublished">2015-07-29</time>
+      <a href="/2015/08/23/KiliLinux-ettercap-dns-arp欺骗/" class="article-date">
+  	<time datetime="2015-08-23T01:40:05.000Z" itemprop="datePublished">2015-08-23</time>
 </a>
     </div>
   
@@ -874,7 +730,7 @@ Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/29/Elementary-Topic02/">Elementary Topic02</a>
+      <a class="article-title" href="/2015/08/23/KiliLinux-ettercap-dns-arp欺骗/">KiliLinux-ettercap-dns&amp;arp欺骗</a>
     </h1>
   
 
@@ -883,149 +739,7 @@ Andrew-&gt;&gt;Chin<span class="variable">a:</span> I <span class="keyword">am</
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Topic02-Describing_our_daily_routines">Topic02-Describing our daily routines</h1><h2 id="Preview">Preview</h2><h3 id="Outcomes:">Outcomes:</h3><pre><code>I can use adverbs of frequency <span class="keyword">to</span> describe daily routines.
-我能使用频率副词
-I can <span class="keyword">state</span> own and different people's routines/habits using Present Simple.
-我能对日常活动进行提问
-</code></pre><h3 id="重点句型">重点句型</h3><ol>
-<li><p>What time do you…?你几点…（做什么)?<br>What time do you get up?</p>
-</li>
-<li><p>How ofen do you …?</p>
-<p>How ofen do you have parties?</p>
-</li>
-<li><p>Do you like to …?</p>
-<p>Do you like to stay up late?</p>
-<h3 id="词汇">词汇</h3></li>
-</ol>
-<ul>
-<li><p><strong>Routimes</strong></p>
-<p>get up;wash;go to work;eat;go home;watch TV;sleep</p>
-</li>
-<li><p><strong>Cultural habits</strong></p>
-<p>eat rice/bread/noodles for breakfast;have some tea/milk/coffee/wine/beer/coconut juice</p>
-</li>
-<li><p><strong>Example</strong></p>
-<p>Get up early,work 38 hours a week,and eat at 8 o’clock-10 o’clock in the evening, walk/travel to work)</p>
-<h3 id="频率副词">频率副词</h3><p>always occasionally </p>
-<p>usually rarely</p>
-<p>often never</p>
-<p>sometimes</p>
-</li>
-</ul>
-<h2 id="WS:_Daily_routines-Planning_a_weekend">WS: Daily routines-Planning a weekend</h2><h3 id="Outcomes:-1">Outcomes:</h3><ul>
-<li><p>I can talk about free time activities.</p>
-</li>
-<li><p>I can organize a weekend in a new town.</p>
-</li>
-</ul>
-<h3 id="Vocabulary:">Vocabulary:</h3><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="label">Gardening</span>, doing yoga, playing <span class="keyword">basketball, </span>watching <span class="keyword">movies, </span>jogging, eating out, going dance, playing <span class="keyword">badminton, </span>playing video games</span><br></pre></td></tr></table></figure>
-<h3 id="Useful_expressions:">Useful expressions:</h3><ul>
-<li>Would you like to do …?</li>
-<li>Are you interested in (doing) something?</li>
-<li>I like (doing) …</li>
-<li>I prefer to be…</li>
-</ul>
-<h2 id="日常安排">日常安排</h2><h3 id="词汇-1">词汇</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">Vocabulary</th>
-<th style="text-align:center">翻译</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">at night</td>
-<td style="text-align:center">duing the night</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">do the ironing</td>
-<td style="text-align:center">to iron all of the clothing that has been washed but is still wrinkled</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">do yoga</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">eat out</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">go for a run</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">go for a walk</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">every day</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">go shopping</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">in the afternoon</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">in the morning</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">make the bed</td>
-<td style="text-align:center">收拾床铺，整理床铺</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">once a month</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">set the table</td>
-<td style="text-align:center">to put plates and silverware on the table in preparation for dinner</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">surf on the Internet</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">walk the dog</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">do the gardening</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">pay the bills</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">go to bed</td>
-<td style="text-align:center"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
+        
       
     </div>
     
@@ -1033,12 +747,12 @@ I can <span class="keyword">state</span> own and different people's routines/hab
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EF/">EF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Elementary/">Elementary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/EF/">EF</a>
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
 	</div>
 
 
@@ -1059,7 +773,7 @@ I can <span class="keyword">state</span> own and different people's routines/hab
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
