@@ -217,7 +217,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="参考资料">参考资料</h3><p><a href="http://blog.csdn.net/linyt/article/category/2868109" target="_blank" rel="external">1.深入浅出缓冲区溢出攻击</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_8043547601017qk0.html" target="_blank" rel="external">2.深入理解system（）函数</a></p>
+<p><a href="http://blog.csdn.net/lzshlzsh/article/details/6066628" target="_blank" rel="external">3. Linux下库函数动态链接过程分析－结合glibc-2.11源码</a></p>
+<p><a href="http://blog.chinaunix.net/uid-25365622-id-3049797.html" target="_blank" rel="external">4.Gcc常用参数</a></p>
+<p><a href="http://blog.csdn.net/geekcome/article/details/6398414" target="_blank" rel="external">5.Linux0.11内核—系统中断处理程序int 0x80实现原理</a></p>
+<p><a href="http://blog.chinaunix.net/uid-253939-id-2458743.html" target="_blank" rel="external">6. 书写Linux下自己的shellcode</a></p>
+<p><a href="http://blog.163.com/lixiangqiu_9202/blog/static/535750372012727102618226/" target="_blank" rel="external">7.Linux下使用objdump+vim+xxd进行反汇编并修改指令  </a></p>
+<p><a href="http://gtkchen.blog.sohu.com/105685961.html" target="_blank" rel="external">8.令人迷惑的AT&amp;T的jmp:直接跳转和间接跳转</a></p>
+<p><a href="http://www.cnblogs.com/02xiaoma/archive/2012/08/26/2657218.html" target="_blank" rel="external">9.自己写的获取Shellcode的程序</a></p>
+<p><a href="http://blog.csdn.net/shixueli/article/details/23815255" target="_blank" rel="external">10. 获取当前指令地址汇编指令</a></p>
+<p><a href="http://www.programlife.net/heapspray-cve2012-1889-exploit-1.html" target="_blank" rel="external">11.实战HeapSpray之CVE2012-1889 Exploit编写序列</a></p>
+<p><a href="http://rshell.blog.163.com/blog/static/41619170201110302937361/" target="_blank" rel="external">12.C语言执行shellcode的五种方法  </a></p>
+<p><a href="http://drops.wooyun.org/tips/4413" target="_blank" rel="external">13.Python编写shellcode注入程序</a></p>
+
       
     </div>
     
@@ -391,7 +404,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="参考资料">参考资料</h3>
       
     </div>
     
@@ -449,7 +462,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="参考资料">参考资料</h3><p><a href="http://drops.wooyun.org/tips/968" target="_blank" rel="external">1.深入了解SQL注入绕过waf和过滤机制</a></p>
+<p><a href="http://blog.csdn.net/xysoul/article/category/2770021" target="_blank" rel="external">2.网络安全</a></p>
+<p><a href="http://blog.csdn.net/primer_programer/article/details/4041048" target="_blank" rel="external">3.MySQL——字符串函数</a></p>
+<p><a href="http://www.waitalone.cn/mysql-injection-summary.html" target="_blank" rel="external">4.Mysql注入总结</a></p>
+<p><a href="http://www.myhack58.com/Article/html/3/7/2011/30958_2.htm" target="_blank" rel="external">5.MYSQL注入语句累积</a></p>
+<p><a href="https://www.91ri.org/6791.html" target="_blank" rel="external">6.MYSQL 注入精华</a></p>
+
       
     </div>
     
@@ -739,7 +758,90 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="unicode，utf-16,utf-32,utf-8介绍">unicode，utf-16,utf-32,utf-8介绍</h2><p><strong>unicode</strong></p>
+<p>Unicode(UCS)编码长度是31位，可以表示$2^{31}$个字符。UCS-4根据最高位为0的最高字节分成$2^7$=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Basic Multilingual Plane）。如果UCS-4的前两个字节为全零，那么将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。每个平面有$2^{16}$=65536个码位。</p>
+<p>用比较简单的话来说就是，Unicode定义了所有可以用来表示字符的数值集合（称之为Code Point）。UTF-8和UTF-16等UTF标准定义了这些数值和字符的映射关系。</p>
+<p><strong>utf-16 vs bmp vs ucs-2</strong></p>
+<p>bmp等同于ucs-2用两个字节来表示，形式如:0x<em>__</em><br>utf-16 当 编码&lt;0x10000时，和bmp是一样的，当编码大于那个值时，因为bmp中有一些控制字符，可以用这些字符来扩展字符的编码，故utf-16可以看成是bmp的父集</p>
+<p>**utf-32 vs ucs-4”</p>
+<p>utf-32和ucs-4也是一样的，是用4个字节表示的，在unix下的宽字符就是用4字节表示，形式如：0x00000041</p>
+<p><strong>utf-8</strong></p>
+<p>utf-8是不像utf-32,或者utf-16是定长的，它是不定长的，由1-6个字节组成<br>0-127的ascii编码的字符与其的utf-8编码相同。其他有由下编码表：</p>
+<table>
+<thead>
+<tr>
+<th>Unicode编码(十六进制)　</th>
+<th>UTF-8 字节流(二进制)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00000000 - 0000007F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>00000080 - 000007FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>00000800 - 0000FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>00010000 - 001FFFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>00200000 - 03FFFFFF</td>
+<td>111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>04000000 - 7FFFFFFF</td>
+<td>1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ascii vs latin-1</strong></p>
+<p>ASCII-American Standard Code for Information Interchange</p>
+<ul>
+<li>Character repertoire:<ul>
+<li>ASCII 严格来讲就是7个bit大小的字符集，也就是code point介于0-127之间的字符集合。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Character code:<ul>
+<li>32-126之间的字元是可打印字元，其他是控制字元。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Character encoding:<ul>
+<li>ASCII可以没有任何编码就可以在计算机中用一个字节表示，也就是每个code point被表示成等价的单字节二进制形式。</li>
+</ul>
+</li>
+</ul>
+<p>LATIN1-8bit sing byte coded graphic character sets.(别名：ISO-8859-1)</p>
+<ul>
+<li><p>Character repertoire:</p>
+<ul>
+<li>Aka ISO-8859-1。是7bit ASCII 字元集的扩充的一种，是8个bit大小的字符集，也就是code point 介于0-255之间的字符集和。</li>
+</ul>
+</li>
+<li><p>Character code:</p>
+<ul>
+<li>包含有191个可打印字符，其余是控制字符或者扩展的欧洲特殊字符。</li>
+</ul>
+</li>
+<li>Character encoding:<ul>
+<li>与ASCII相似， 每个code point被表示成等价的单字节二进制形式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料">参考资料</h2><p><a href="http://www.cnblogs.com/TsengYuen/archive/2012/05/22/2513290.html" target="_blank" rel="external">1.unicode和Python的中文处理</a></p>
+<p><a href="http://www.cnblogs.com/wpcockroach/p/3907324.html" target="_blank" rel="external">2.简单几句话总结Unicode，UTF-8和UTF-16</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_5edf2a9f0100sicm.html" target="_blank" rel="external">3.latin,ascii,utf</a></p>
+
       
     </div>
     

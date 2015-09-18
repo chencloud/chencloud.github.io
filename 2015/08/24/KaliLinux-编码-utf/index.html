@@ -5,16 +5,19 @@
   
   <title>KaliLinux-编码-utf | Jaye&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我只想成为一个不想迷失方向的攻城狮">
+  <meta name="description" content="unicode，utf-16,utf-32,utf-8介绍unicode
+Unicode(UCS)编码长度是31位，可以表示$2^{31}$个字符。UCS-4根据最高位为0的最高字节分成$2^7$=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Bas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KaliLinux-编码-utf">
 <meta property="og:url" content="http://jaye.needpp.com/2015/08/24/KaliLinux-编码-utf/index.html">
 <meta property="og:site_name" content="Jaye's blog">
-<meta property="og:description" content="我只想成为一个不想迷失方向的攻城狮">
-<meta property="og:updated_time" content="2015-08-23T23:58:39.476Z">
+<meta property="og:description" content="unicode，utf-16,utf-32,utf-8介绍unicode
+Unicode(UCS)编码长度是31位，可以表示$2^{31}$个字符。UCS-4根据最高位为0的最高字节分成$2^7$=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Bas">
+<meta property="og:updated_time" content="2015-09-18T13:46:49.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KaliLinux-编码-utf">
-<meta name="twitter:description" content="我只想成为一个不想迷失方向的攻城狮">
+<meta name="twitter:description" content="unicode，utf-16,utf-32,utf-8介绍unicode
+Unicode(UCS)编码长度是31位，可以表示$2^{31}$个字符。UCS-4根据最高位为0的最高字节分成$2^7$=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Bas">
   
     <link rel="alternative" href="/atom.xml" title="Jaye&#39;s blog" type="application/atom+xml">
   
@@ -231,7 +234,90 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="unicode，utf-16,utf-32,utf-8介绍">unicode，utf-16,utf-32,utf-8介绍</h2><p><strong>unicode</strong></p>
+<p>Unicode(UCS)编码长度是31位，可以表示$2^{31}$个字符。UCS-4根据最高位为0的最高字节分成$2^7$=128个group。每个group再根据次高字节分为256个平面（plane）。每个平面根据第3个字节分为256行 （row），每行有256个码位（cell）。group 0的平面0被称作BMP（Basic Multilingual Plane）。如果UCS-4的前两个字节为全零，那么将UCS-4的BMP去掉前面的两个零字节就得到了UCS-2。每个平面有$2^{16}$=65536个码位。</p>
+<p>用比较简单的话来说就是，Unicode定义了所有可以用来表示字符的数值集合（称之为Code Point）。UTF-8和UTF-16等UTF标准定义了这些数值和字符的映射关系。</p>
+<p><strong>utf-16 vs bmp vs ucs-2</strong></p>
+<p>bmp等同于ucs-2用两个字节来表示，形式如:0x<em>__</em><br>utf-16 当 编码&lt;0x10000时，和bmp是一样的，当编码大于那个值时，因为bmp中有一些控制字符，可以用这些字符来扩展字符的编码，故utf-16可以看成是bmp的父集</p>
+<p>**utf-32 vs ucs-4”</p>
+<p>utf-32和ucs-4也是一样的，是用4个字节表示的，在unix下的宽字符就是用4字节表示，形式如：0x00000041</p>
+<p><strong>utf-8</strong></p>
+<p>utf-8是不像utf-32,或者utf-16是定长的，它是不定长的，由1-6个字节组成<br>0-127的ascii编码的字符与其的utf-8编码相同。其他有由下编码表：</p>
+<table>
+<thead>
+<tr>
+<th>Unicode编码(十六进制)　</th>
+<th>UTF-8 字节流(二进制)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00000000 - 0000007F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>00000080 - 000007FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>00000800 - 0000FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>00010000 - 001FFFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>00200000 - 03FFFFFF</td>
+<td>111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>04000000 - 7FFFFFFF</td>
+<td>1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ascii vs latin-1</strong></p>
+<p>ASCII-American Standard Code for Information Interchange</p>
+<ul>
+<li>Character repertoire:<ul>
+<li>ASCII 严格来讲就是7个bit大小的字符集，也就是code point介于0-127之间的字符集合。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Character code:<ul>
+<li>32-126之间的字元是可打印字元，其他是控制字元。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Character encoding:<ul>
+<li>ASCII可以没有任何编码就可以在计算机中用一个字节表示，也就是每个code point被表示成等价的单字节二进制形式。</li>
+</ul>
+</li>
+</ul>
+<p>LATIN1-8bit sing byte coded graphic character sets.(别名：ISO-8859-1)</p>
+<ul>
+<li><p>Character repertoire:</p>
+<ul>
+<li>Aka ISO-8859-1。是7bit ASCII 字元集的扩充的一种，是8个bit大小的字符集，也就是code point 介于0-255之间的字符集和。</li>
+</ul>
+</li>
+<li><p>Character code:</p>
+<ul>
+<li>包含有191个可打印字符，其余是控制字符或者扩展的欧洲特殊字符。</li>
+</ul>
+</li>
+<li>Character encoding:<ul>
+<li>与ASCII相似， 每个code point被表示成等价的单字节二进制形式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料">参考资料</h2><p><a href="http://www.cnblogs.com/TsengYuen/archive/2012/05/22/2513290.html" target="_blank" rel="external">1.unicode和Python的中文处理</a></p>
+<p><a href="http://www.cnblogs.com/wpcockroach/p/3907324.html" target="_blank" rel="external">2.简单几句话总结Unicode，UTF-8和UTF-16</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_5edf2a9f0100sicm.html" target="_blank" rel="external">3.latin,ascii,utf</a></p>
+
       
     </div>
     
