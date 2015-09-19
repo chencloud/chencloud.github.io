@@ -3,39 +3,40 @@
 <head>
   <meta charset="utf-8">
   
-  <title>缓冲区溢出原理和实践 | Jaye&#39;s blog</title>
+  <title>linux.c编程一站式学习-阶段总结 | Jaye&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考资料1.深入浅出缓冲区溢出攻击
-2.深入理解system（）函数
-3. Linux下库函数动态链接过程分析－结合glibc-2.11源码
-4.Gcc常用参数
-5.Linux0.11内核—系统中断处理程序int 0x80实现原理
-6. 书写Linux下自己的shellcode
-7.Linux下使用objdump+vim+xxd进行反汇编并修改指令  
-8.令人迷惑的AT&amp;amp;T的jmp:直接">
+  <meta name="description" content="补充：vim+xxd:
+
+%!xxd
+%!xxd -r
+
+参考资料《Linux-c 编程-一站式学习》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="缓冲区溢出原理和实践">
-<meta property="og:url" content="http://jaye.needpp.com/2015/09/17/缓冲区溢出原理和实践/index.html">
+<meta property="og:title" content="linux.c编程一站式学习-阶段总结">
+<meta property="og:url" content="http://jaye.needpp.com/2015/09/18/linux-c编程一站式学习-阶段总结/index.html">
 <meta property="og:site_name" content="Jaye's blog">
-<meta property="og:description" content="参考资料1.深入浅出缓冲区溢出攻击
-2.深入理解system（）函数
-3. Linux下库函数动态链接过程分析－结合glibc-2.11源码
-4.Gcc常用参数
-5.Linux0.11内核—系统中断处理程序int 0x80实现原理
-6. 书写Linux下自己的shellcode
-7.Linux下使用objdump+vim+xxd进行反汇编并修改指令  
-8.令人迷惑的AT&amp;amp;T的jmp:直接">
-<meta property="og:updated_time" content="2015-09-18T13:36:10.511Z">
+<meta property="og:description" content="补充：vim+xxd:
+
+%!xxd
+%!xxd -r
+
+参考资料《Linux-c 编程-一站式学习》">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/8644083.jpg">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/51781578.jpg">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/47788592.jpg">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/31459494.jpg">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/60446013.jpg">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/60446013.jpg">
+<meta property="og:image" content="http://7xkkkb.com1.z0.glb.clouddn.com/53077860-5e19-11e5-89fb-db2450485c41.png">
+<meta property="og:updated_time" content="2015-09-18T15:25:44.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="缓冲区溢出原理和实践">
-<meta name="twitter:description" content="参考资料1.深入浅出缓冲区溢出攻击
-2.深入理解system（）函数
-3. Linux下库函数动态链接过程分析－结合glibc-2.11源码
-4.Gcc常用参数
-5.Linux0.11内核—系统中断处理程序int 0x80实现原理
-6. 书写Linux下自己的shellcode
-7.Linux下使用objdump+vim+xxd进行反汇编并修改指令  
-8.令人迷惑的AT&amp;amp;T的jmp:直接">
+<meta name="twitter:title" content="linux.c编程一站式学习-阶段总结">
+<meta name="twitter:description" content="补充：vim+xxd:
+
+%!xxd
+%!xxd -r
+
+参考资料《Linux-c 编程-一站式学习》">
   
     <link rel="alternative" href="/atom.xml" title="Jaye&#39;s blog" type="application/atom+xml">
   
@@ -211,11 +212,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-缓冲区溢出原理和实践" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-linux-c编程一站式学习-阶段总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/17/缓冲区溢出原理和实践/" class="article-date">
-  	<time datetime="2015-09-17T07:14:02.000Z" itemprop="datePublished">2015-09-17</time>
+      <a href="/2015/09/18/linux-c编程一站式学习-阶段总结/" class="article-date">
+  	<time datetime="2015-09-18T15:18:57.000Z" itemprop="datePublished">2015-09-18</time>
 </a>
     </div>
   
@@ -228,7 +229,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      缓冲区溢出原理和实践
+      linux.c编程一站式学习-阶段总结
     </h1>
   
 
@@ -252,19 +253,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="参考资料">参考资料</h3><p><a href="http://blog.csdn.net/linyt/article/category/2868109" target="_blank" rel="external">1.深入浅出缓冲区溢出攻击</a></p>
-<p><a href="http://blog.sina.com.cn/s/blog_8043547601017qk0.html" target="_blank" rel="external">2.深入理解system（）函数</a></p>
-<p><a href="http://blog.csdn.net/lzshlzsh/article/details/6066628" target="_blank" rel="external">3. Linux下库函数动态链接过程分析－结合glibc-2.11源码</a></p>
-<p><a href="http://blog.chinaunix.net/uid-25365622-id-3049797.html" target="_blank" rel="external">4.Gcc常用参数</a></p>
-<p><a href="http://blog.csdn.net/geekcome/article/details/6398414" target="_blank" rel="external">5.Linux0.11内核—系统中断处理程序int 0x80实现原理</a></p>
-<p><a href="http://blog.chinaunix.net/uid-253939-id-2458743.html" target="_blank" rel="external">6. 书写Linux下自己的shellcode</a></p>
-<p><a href="http://blog.163.com/lixiangqiu_9202/blog/static/535750372012727102618226/" target="_blank" rel="external">7.Linux下使用objdump+vim+xxd进行反汇编并修改指令  </a></p>
-<p><a href="http://gtkchen.blog.sohu.com/105685961.html" target="_blank" rel="external">8.令人迷惑的AT&amp;T的jmp:直接跳转和间接跳转</a></p>
-<p><a href="http://www.cnblogs.com/02xiaoma/archive/2012/08/26/2657218.html" target="_blank" rel="external">9.自己写的获取Shellcode的程序</a></p>
-<p><a href="http://blog.csdn.net/shixueli/article/details/23815255" target="_blank" rel="external">10. 获取当前指令地址汇编指令</a></p>
-<p><a href="http://www.programlife.net/heapspray-cve2012-1889-exploit-1.html" target="_blank" rel="external">11.实战HeapSpray之CVE2012-1889 Exploit编写序列</a></p>
-<p><a href="http://rshell.blog.163.com/blog/static/41619170201110302937361/" target="_blank" rel="external">12.C语言执行shellcode的五种方法  </a></p>
-<p><a href="http://drops.wooyun.org/tips/4413" target="_blank" rel="external">13.Python编写shellcode注入程序</a></p>
+        <p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/8644083.jpg" alt=""></p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/51781578.jpg" alt=""></p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/47788592.jpg" alt=""></p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/31459494.jpg" alt=""></p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/60446013.jpg" alt=""></p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/15-9-18/60446013.jpg" alt=""></p>
+<p><img src="http://7xkkkb.com1.z0.glb.clouddn.com/53077860-5e19-11e5-89fb-db2450485c41.png" alt=""></p>
+<p>补充：<br>vim+xxd:</p>
+<ol>
+<li>%!xxd</li>
+<li>%!xxd -r</li>
+</ol>
+<h3 id="参考资料">参考资料</h3><p>《Linux-c 编程-一站式学习》</p>
 
       
     </div>
@@ -274,18 +275,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/09/18/linux-c编程一站式学习-阶段总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          linux.c编程一站式学习-阶段总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/17/汇编之jmp-call-ret/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">汇编之jmp&amp;call&amp;ret</div>
+    <a href="/2015/09/17/缓冲区溢出原理和实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">缓冲区溢出原理和实践</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -299,7 +291,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="缓冲区溢出原理和实践" data-title="缓冲区溢出原理和实践" data-url="http://jaye.needpp.com/2015/09/17/缓冲区溢出原理和实践/"></div>
+	<div class="ds-thread" data-thread-key="linux-c编程一站式学习-阶段总结" data-title="linux.c编程一站式学习-阶段总结" data-url="http://jaye.needpp.com/2015/09/18/linux-c编程一站式学习-阶段总结/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
