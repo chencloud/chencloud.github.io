@@ -391,7 +391,223 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="awk简介">awk简介</h3><p><strong>1.内置变量的介绍</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前记录（作为单个变量）</td>
+</tr>
+<tr>
+<td><strong>$1</strong>-<strong>$n</strong></td>
+<td>前记录的第n个字段，字段间由FS分隔</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>字段数</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>输入字段分隔符 默认是空格</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>已经读出的记录数，就是行号，从1开始</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>输入的记录他隔符默 认为换行符</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>输出字段分隔符 默认也是空格</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>输出的记录分隔符，默认为换行符</td>
+</tr>
+<tr>
+<td>ARGC</td>
+<td>命令行参数个数</td>
+</tr>
+<tr>
+<td>ARGV</td>
+<td>命令行参数数组</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前输入文件的名字</td>
+</tr>
+<tr>
+<td>IGNORECASE</td>
+<td>如果为真，则进行忽略大小写的匹配</td>
+</tr>
+<tr>
+<td>ARGIND</td>
+<td>当前被处理文件的ARGV标志符</td>
+</tr>
+<tr>
+<td>CONVFMT</td>
+<td>数字转换格式 %.6g</td>
+</tr>
+<tr>
+<td>ENVIRON</td>
+<td>UNIX环境变量</td>
+</tr>
+<tr>
+<td>ERRNO</td>
+<td>UNIX系统错误消息</td>
+</tr>
+<tr>
+<td>FIELDWIDTHS</td>
+<td>输入字段宽度的空白分隔字符串</td>
+</tr>
+<tr>
+<td>FNR</td>
+<td>当前记录数</td>
+</tr>
+<tr>
+<td>OFMT</td>
+<td>数字的输出格式 %.6g</td>
+</tr>
+<tr>
+<td>RSTART</td>
+<td>被匹配函数匹配的字符串首</td>
+</tr>
+<tr>
+<td>RLENGTH</td>
+<td>被匹配函数匹配的字符串长度</td>
+</tr>
+<tr>
+<td>SUBSEP</td>
+<td>数组下标分隔符，默认为\034</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.语法和常用命令参数</strong></p>
+<figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">awk 选项 <span class="string">'/pattern/&#123;action&#125;'</span> filename1,filename2</span><br><span class="line"></span><br><span class="line"><span class="list">&#123;action&#125;</span>包括:</span><br><span class="line">BEGIN<span class="list">&#123;&#125;</span></span><br><span class="line"><span class="list">&#123;&#125;</span></span><br><span class="line">END<span class="list">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>其中 pattern 表示 AWK 在数据中查找的内容，而 action 是在找到匹配内容时所执行的一系列命令。花括号（{}）不需要在程序中始终出现，但它们用于根据特定的模式对一系列指令进行分组。 pattern就是要表示的正则表达式，用斜杠括起来。</p>
+<p><strong><em>常用参数</em></strong></p>
+<figure class="highlight nsis"><table><tr><td class="code"><pre><span class="line">awk -F: 'NR==<span class="number">3</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass      <span class="comment">#打印第3行</span></span><br><span class="line">awk -F: '&#123;<span class="literal">print</span> FILENAME,NR,FNR,<span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass pass2   <span class="comment">#NR是所有文件的行号，FNR是当前读入文件的行号，FILENAME文件名</span></span><br><span class="line">awk -F: '&#123;<span class="literal">print</span> NF,FILENAME,NR,<span class="variable">$0</span>&#125;' pass     <span class="comment">#打印字段数，与分割符选取有关</span></span><br><span class="line">awk -F[:/] '&#123;<span class="literal">print</span> NF,FILENAME,NR,<span class="variable">$0</span>&#125;' pass    <span class="comment">#指定多种分割符</span></span><br><span class="line">awk -F[^a-Z] '&#123;<span class="literal">print</span> NF,FILENAME,NR,<span class="variable">$0</span>&#125;' pass    <span class="comment">#非字母作分割符</span></span><br><span class="line">awk 'FS=<span class="string">":"</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass       <span class="comment">#以变量方式指定分割符</span></span><br><span class="line">awk -F: 'OFS=<span class="string">"----"</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass      <span class="comment">#将默认的空格分割符输出变成"----"</span></span><br><span class="line">awk -F: 'ORS=<span class="string">"|||"</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass      <span class="comment">#将默认的回车换行符设置为|||</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.实例</strong></p>
+<p>(1)正则匹配，awk默认支持扩展的正则表达</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>cat /etc/passwd |head -n <span class="number">5</span>|awk -<span class="constant">F:</span> <span class="string">'/^root/&#123;print $0&#125;'</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br></pre></td></tr></table></figure>
+<p>(2)运算符</p>
+<p>a.比较运算符</p>
+<figure class="highlight nsis"><table><tr><td class="code"><pre><span class="line">awk -F: 'NR!=<span class="number">3</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass</span><br><span class="line">awk -F: 'NR&lt;=<span class="number">3</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass</span><br><span class="line">awk -F: '<span class="variable">$1</span>~/ro/ &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass       <span class="comment">#第一列匹配ro，被匹配的部分需要用""或//，支持正则</span></span><br><span class="line">awk -F: '<span class="variable">$7</span>~<span class="string">"sh$"</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass</span><br><span class="line">awk -F: '<span class="variable">$7</span>!~<span class="string">"sh$"</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass</span><br><span class="line">awk -F: 'NR&gt;<span class="number">3</span>&amp;&amp;NR&lt;<span class="number">6</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass <span class="comment">#3-6行</span></span><br><span class="line">awk -F: 'NR&lt;<span class="number">3</span> || NR&gt;<span class="number">6</span> &#123;<span class="literal">print</span> <span class="variable">$1</span>,<span class="variable">$7</span>&#125;' pass</span><br><span class="line">awk 'BEGIN&#123;FS=<span class="string">":"</span>&#125;<span class="variable">$NF</span>~<span class="string">"bash$"</span>&#123;<span class="literal">print</span> <span class="variable">$0</span>&#125;'</span><br></pre></td></tr></table></figure>
+<p>b.算术运算符</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">awk</span> -F: <span class="string">'<span class="variable">$3</span>=<span class="variable">$3</span>+1 &#123;print <span class="variable">$1</span>,<span class="variable">$3</span>&#125;'</span> pass      <span class="comment">#加一</span></span><br><span class="line">awk -F: <span class="string">'<span class="variable">$3</span>++ &#123;print <span class="variable">$1</span>,<span class="variable">$3</span>&#125;'</span> pass</span><br><span class="line">awk -F: <span class="string">'<span class="variable">$3</span>+=1 &#123;print <span class="variable">$1</span>,<span class="variable">$3</span>&#125;'</span> pass</span><br><span class="line">awk -F: <span class="string">'<span class="variable">$3</span>%2==0 &#123;print <span class="variable">$1</span>,<span class="variable">$3</span>&#125;'</span> pass</span><br><span class="line">awk -F: <span class="string">'<span class="variable">$3</span>=<span class="variable">$3</span>**2 &#123;print <span class="variable">$1</span>,<span class="variable">$3</span>&#125;'</span> pass      <span class="comment">#$3的平方`</span></span><br></pre></td></tr></table></figure>
+<p>c.转义符<br><figure class="highlight nsis"><table><tr><td class="code"><pre><span class="line">awk -F: '&#123;<span class="literal">print</span> <span class="variable">$1</span><span class="string">"\t"</span><span class="variable">$3</span>&#125;' pas</span><br><span class="line">awk -F: '&#123;<span class="literal">print</span> <span class="variable">$1</span><span class="string">"\b"</span><span class="variable">$3</span>&#125;' pass</span><br></pre></td></tr></table></figure></p>
+<p>d.逻辑运算符<br><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">&amp;&amp; <span class="string">||</span></span><br></pre></td></tr></table></figure></p>
+<p>(3)for,while,do while，break,continue</p>
+<p>在awk中，if,for,while,do while,break,continue和c语言中的格式类似</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">condition</span>)&#123;</span><br><span class="line"><span class="keyword">expression</span>&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">condition</span>)&#123;</span><br><span class="line"><span class="keyword">expression</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">expression</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#<span class="keyword">for</span>迭代器</span><br><span class="line"><span class="keyword">for</span>(var <span class="keyword">in</span> array)&#123;</span><br><span class="line"><span class="keyword">expression</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(init;<span class="keyword">condition</span>;<span class="keyword">expression</span>)&#123;</span><br><span class="line"><span class="keyword">expression</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">condition</span>)&#123;</span><br><span class="line">expresssion</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"><span class="keyword">expression</span>&#125;</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">condition</span>)</span><br></pre></td></tr></table></figure>
+<p>(4)数组</p>
+<p>在 awk 中，数组下标通常从 1 开始，而不是 0<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span>[<span class="number">1</span>] = <span class="string">"hello"</span></span><br><span class="line"><span class="built_in">array</span>[<span class="number">2</span>] = <span class="string">"world"</span></span><br><span class="line"><span class="built_in">array</span>[<span class="string">"h"</span>] = <span class="string">"!"</span></span><br></pre></td></tr></table></figure></p>
+<p>(5)三目运算符<br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">condition ? expression1 : expression2</span><br></pre></td></tr></table></figure></p>
+<p>(6)格式化输出<br><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">与c语言的printf类似的语法</span><br><span class="line">$ <span class="keyword">cat</span> /etc/passwd|head -<span class="keyword">n</span> 10|awk -F: '<span class="label">$NF</span>!~/<span class="keyword">sh</span>$/ &#123;printf(<span class="string">"%s\t%d\n"</span>,<span class="label">$1</span>,<span class="label">$3</span>)&#125;'</span><br><span class="line">bin	1</span><br><span class="line">daemon	2</span><br><span class="line">adm	3</span><br><span class="line">lp	4</span><br><span class="line">sync	5</span><br><span class="line">shutdown	6</span><br><span class="line">halt	7</span><br><span class="line">mail	8</span><br><span class="line">uucp	10</span><br><span class="line"></span><br><span class="line">$ <span class="keyword">cat</span> /etc/passwd|head -<span class="keyword">n</span> 10|awk -F: '<span class="label">$NF</span>!~/<span class="keyword">sh</span>$/ &#123;<span class="keyword">print</span> <span class="label">$1</span>,<span class="label">$3&#125;</span>'</span><br><span class="line">bin 1</span><br><span class="line">daemon 2</span><br><span class="line">adm 3</span><br><span class="line">lp 4</span><br><span class="line">sync 5</span><br><span class="line">shutdown 6</span><br><span class="line">halt 7</span><br><span class="line">mail 8</span><br><span class="line">uucp 10</span><br></pre></td></tr></table></figure></p>
+<p>(7)通用的函数</p>
+<p>a.算术函数<br><figure class="highlight openscad"><table><tr><td class="code"><pre><span class="line">以下算术函数执行与 C 语言中名称相同的子例程相同的操作： </span><br><span class="line"><span class="built_in">atan2</span><span class="params">( y, x )</span>     返回 y/x 的反正切。</span><br><span class="line"><span class="built_in">cos</span><span class="params">( x )</span>       返回 x 的余弦；x 是弧度。</span><br><span class="line"><span class="built_in">sin</span><span class="params">( x )</span>       返回 x 的正弦；x 是弧度。</span><br><span class="line"><span class="built_in">exp</span><span class="params">( x )</span>       返回 x 幂函数。</span><br><span class="line"><span class="built_in">log</span><span class="params">( x )</span>       返回 x 的自然对数。</span><br><span class="line"><span class="built_in">sqrt</span><span class="params">( x )</span>     返回 x 平方根。</span><br><span class="line">int<span class="params">( x )</span>       返回 x 的截断至整数的值。</span><br><span class="line">rand<span class="params">( )</span>        返回任意数字 n，其中 <span class="number">0</span> &lt;= n &lt; <span class="number">1</span>。</span><br><span class="line">srand<span class="params">( [Expr] )</span>   将 rand 函数的种子值设置为 Expr 参数的值，或如果省略 Expr 参数则使用某天的时间。返回先前的种子值。</span><br><span class="line"></span><br><span class="line">举例说明：</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;OFMT=<span class="string">"%.3f"</span>;fs=<span class="built_in">sin</span><span class="params">(<span class="number">1</span>)</span>;fe=<span class="built_in">exp</span><span class="params">(<span class="number">10</span>)</span>;fl=<span class="built_in">log</span><span class="params">(<span class="number">10</span>)</span>;fi=int<span class="params">(<span class="number">3.1415</span>)</span>;print fs,fe,fl,fi;&#125;'</span><br><span class="line"><span class="number">0.841</span> <span class="number">22026.466</span> <span class="number">2.303</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line">OFMT 设置输出数据格式是保留<span class="number">3</span>位小数</span><br><span class="line">获得随机数：</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;srand<span class="params">()</span>;fr=int<span class="params">(<span class="number">100</span>*rand<span class="params">()</span>)</span>;print fr;&#125;'</span><br><span class="line"><span class="number">78</span></span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;srand<span class="params">()</span>;fr=int<span class="params">(<span class="number">100</span>*rand<span class="params">()</span>)</span>;print fr;&#125;'</span><br><span class="line"><span class="number">31</span></span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;srand<span class="params">()</span>;fr=int<span class="params">(<span class="number">100</span>*rand<span class="params">()</span>)</span>;print fr;&#125;'</span><br><span class="line"><span class="number">41</span></span><br></pre></td></tr></table></figure></p>
+<p>b.字符串函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gsub( Ere, Repl, [ In ] )</td>
+<td>除了正则表达式所有具体值被替代这点，它和 sub 函数完全一样地执行</td>
+</tr>
+<tr>
+<td>sub( Ere, Repl, [ In ] )</td>
+<td>用 Repl 参数指定的字符串替换 In 参数指定的字符串中的由 Ere 参数指定的扩展正则表达式的第一个具体值。sub 函数返回替换的数量。出现在 Repl 参数指定的字符串中的 &amp;（和符号）由 In 参数指定的与 Ere 参数的指定的扩展正则表达式匹配的字符串替换。如果未指定 In 参数，缺省值是整个记录（$0 记录变量）</td>
+</tr>
+<tr>
+<td>index( String1, String2 )</td>
+<td>在由 String1 参数指定的字符串（其中有出现 String2 指定的参数）中，返回位置，从 1 开始编号。如果 String2 参数不在 String1 参数中出现，则返回 0（零）</td>
+</tr>
+<tr>
+<td>length （[String]）</td>
+<td>返回 String 参数指定的字符串的长度（字符形式）。如果未给出 String 参数，则返回整个记录的长度（$0 记录变量）</td>
+</tr>
+<tr>
+<td>blength （[String]）</td>
+<td>返回 String 参数指定的字符串的长度（以字节为单位）。如果未给出 String 参数，则返回整个记录的长度（$0 记录变量）</td>
+</tr>
+<tr>
+<td>substr( String, M, [ N ] )</td>
+<td>返回具有 N 参数指定的字符数量子串。子串从 String 参数指定的字符串取得，其字符以 M 参数指定的位置开始。M 参数指定为将 String 参数中的第一个字符作为编号 1。如果未指定 N 参数，则子串的长度将是 M 参数指定的位置到 String 参数的末尾 的长度</td>
+</tr>
+<tr>
+<td>match( String, Ere )</td>
+<td>String 参数指定的字符串（Ere 参数指定的扩展正则表达式出现在其中）中返回位置（字符形式），从 1 开始编号，或如果 Ere 参数不出现，则返回 0（零）。RSTART 特殊变量设置为返回值。RLENGTH 特殊变量设置为匹配的字符串的长度，或如果未找到任何匹配，则设置为 -1（负一）</td>
+</tr>
+<tr>
+<td>split( String, A, [Ere] )</td>
+<td>将 String 参数指定的参数分割为数组元素 A[1], A[2], . . ., A[n]，并返回 n 变量的值。此分隔可以通过 Ere 参数指定的扩展正则表达式进行，或用当前字段分隔符（FS 特殊变量）来进行（如果没有给出 Ere 参数）。除非上下文指明特定的元素还应具有一个数字值，否则 A 数组中的元素用字符串值来创建</td>
+</tr>
+<tr>
+<td>tolower( String )</td>
+<td>返回 String 参数指定的字符串，字符串中每个大写字符将更改为小写。大写和小写的映射由当前语言环境的 LC_CTYPE 范畴定义</td>
+</tr>
+<tr>
+<td>toupper( String )</td>
+<td>返回 String 参数指定的字符串，字符串中每个小写字符将更改为大写。大写和小写的映射由当前语言环境的 LC_CTYPE 范畴定义</td>
+</tr>
+<tr>
+<td>sprintf(Format, Expr, Expr, . . . )</td>
+<td>根据 Format 参数指定的 printf 子例程格式字符串来格式化 Expr 参数指定的表达式并返回最后生成的字符串。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">gsub,sub使用</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;info=<span class="string">"this is a test2010test!"</span>;gsub(/[0-9]+/,<span class="string">"!"</span>,info);<span class="keyword">print</span> info&#125;'  </span><br><span class="line">this is a <span class="keyword">test</span>!<span class="keyword">test</span>!</span><br><span class="line">在 info中查找满足正则表达式，/[0-9]+/ 用””替换，并且替换后的值，赋值给info 未给info值，默认是<span class="label">$0</span></span><br><span class="line"></span><br><span class="line">查找字符串（index使用）</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;info=<span class="string">"this is a test2010test!"</span>;<span class="keyword">print</span> <span class="literal">index</span>(info,<span class="string">"test"</span>)?<span class="string">"ok"</span>:<span class="string">"no found"</span>;&#125;'   </span><br><span class="line">ok</span><br><span class="line">未找到，返回0</span><br><span class="line"></span><br><span class="line">正则表达式匹配查找(match使用）</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;info=<span class="string">"this is a test2010test!"</span>;<span class="keyword">print</span> <span class="literal">match</span>(info,/[0-9]+/)?<span class="string">"ok"</span>:<span class="string">"no found"</span>;&#125;'</span><br><span class="line">ok</span><br><span class="line"></span><br><span class="line">截取字符串(substr使用）</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;info=<span class="string">"this is a test2010test!"</span>;<span class="keyword">print</span> <span class="literal">substr</span>(info,4,10);&#125;'</span><br><span class="line">s is a <span class="keyword">tes</span></span><br><span class="line">从第 4个 字符开始，截取10个长度字符串</span><br><span class="line"></span><br><span class="line">字符串分割（<span class="keyword">split</span>使用）</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;info=<span class="string">"this is a test"</span>;<span class="keyword">split</span>(info,<span class="keyword">tA</span>,<span class="string">" "</span>);<span class="keyword">print</span> <span class="literal">length</span>(<span class="keyword">tA</span>);<span class="keyword">for</span>(k <span class="keyword">in</span> <span class="keyword">tA</span>)&#123;<span class="keyword">print</span> k,<span class="keyword">tA</span>[k];&#125;&#125;'</span><br><span class="line">4</span><br><span class="line">4 <span class="keyword">test</span></span><br><span class="line">1 this</span><br><span class="line">2 is</span><br><span class="line">3 a</span><br><span class="line">分割info,动态创建数组<span class="keyword">tA</span>,这里比较有意思，awk <span class="keyword">for</span> …<span class="keyword">in</span> 循环，是一个无序的循环。 并不是从数组下标1…<span class="keyword">n</span> ，因此使用时候需要注意。</span><br><span class="line"></span><br><span class="line">格式化字符串输出（sprintf使用）</span><br><span class="line">格式化字符串格式：</span><br><span class="line">其中格式化字符串包括两部分内容: 一部分是正常字符, 这些字符将按原样输出; 另一部分是格式化规定字符, 以<span class="string">"%"</span>开始, 后跟一个或几个规定字符,用来确定输出内容格式。</span><br><span class="line"></span><br><span class="line">格式符     说明</span><br><span class="line">%<span class="keyword">d</span>     十进制有符号整数</span><br><span class="line">%<span class="keyword">u</span>     十进制无符号整数</span><br><span class="line">%f     浮点数</span><br><span class="line">%s     字符串</span><br><span class="line">%c     单个字符</span><br><span class="line">%p     指针的值</span><br><span class="line">%<span class="keyword">e</span>     指数形式的浮点数</span><br><span class="line">%x     %X 无符号以十六进制表示的整数</span><br><span class="line">%o     无符号以八进制表示的整数</span><br><span class="line">%<span class="keyword">g</span>     自动选择合适的表示法</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;n1=124.113;n2=-1.224;n3=1.2345; printf(<span class="string">"%.2f,%.2u,%.2g,%X,%o\n"</span>,n1,n2,n3,n1,n1);&#125;'</span><br><span class="line">124.11,18446744073709551615,1.2,7C,174</span><br></pre></td></tr></table></figure>
+<p>c.一般函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close( Expression )</td>
+<td>用同一个带字符串值的 Expression 参数来关闭由 print 或 printf 语句打开的或调用 getline 函数打开的文件或管道。如果文件或管道成功关闭，则返回 0；其它情况下返回非零值。如果打算写一个文件，并稍后在同一个程序中读取文件，则 close 语句是必需的</td>
+</tr>
+<tr>
+<td>system(Command )</td>
+<td>执行 Command 参数指定的命令，并返回退出状态。等同于 system 子例程</td>
+</tr>
+<tr>
+<td>Expression  getline [ Variable ]</td>
+<td>从来自 Expression 参数指定的命令的输出中通过管道传送的流中读取一个输入记录，并将该记录的值指定给 Variable 参数指定的变量。如果当前未打开将 Expression 参数的值作为其命令名称的流，则创建流。创建的流等同于调用 popen 子例程，此时 Command 参数取 Expression 参数的值且 Mode 参数设置为一个是 r 的值。只要流保留打开且 Expression 参数求得同一个字符串，则对 getline 函数的每次后续调用读取另一个记录。如果未指定 Variable 参数，则 $0 记录变量和 NF 特殊变量设置为从流读取的记录</td>
+</tr>
+<tr>
+<td>getline [ Variable ] &lt; Expression</td>
+<td>从 Expression 参数指定的文件读取输入的下一个记录，并将 Variable 参数指定的变量设置为该记录的值。只要流保留打开且 Expression 参数对同一个字符串求值，则对 getline 函数的每次后续调用读取另一个记录。如果未指定 Variable 参数，则 $0 记录变量和 NF 特殊变量设置为从流读取的记录</td>
+</tr>
+<tr>
+<td>getline [ Variable ]</td>
+<td>将 Variable 参数指定的变量设置为从当前输入文件读取的下一个输入记录。如果未指定 Variable 参数，则 $0 记录变量设置为该记录的值，还将设置 NF、NR 和 FNR 特殊变量</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">打开外部文件（close用法）</span><br><span class="line">[<span class="variable">@centos5</span> ~]<span class="variable">$ </span>awk <span class="string">'BEGIN&#123;while("cat /etc/passwd"|getline)&#123;print $0;&#125;;close("/etc/passwd");&#125;'</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">逐行读取外部文件(getline使用方法）</span><br><span class="line">[<span class="variable">@centos5</span> ~]<span class="variable">$ </span>awk <span class="string">'BEGIN&#123;while(getline &lt; "/etc/passwd")&#123;print $0;&#125;;close("/etc/passwd");&#125;'</span></span><br><span class="line"><span class="symbol">root:</span><span class="symbol">x:</span><span class="number">0</span><span class="symbol">:</span><span class="number">0</span><span class="symbol">:root</span><span class="symbol">:/root</span><span class="symbol">:/bin/bash</span></span><br><span class="line"><span class="symbol">bin:</span><span class="symbol">x:</span><span class="number">1</span><span class="symbol">:</span><span class="number">1</span><span class="symbol">:bin</span><span class="symbol">:/bin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"><span class="symbol">daemon:</span><span class="symbol">x:</span><span class="number">2</span><span class="symbol">:</span><span class="number">2</span><span class="symbol">:daemon</span><span class="symbol">:/sbin</span><span class="symbol">:/sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[<span class="variable">@centos5</span> ~]<span class="variable">$ </span>awk <span class="string">'BEGIN&#123;print "Enter your name:";getline name;print name;&#125;'</span></span><br><span class="line"><span class="constant">Enter </span>your <span class="symbol">name:</span></span><br><span class="line">chengmo</span><br><span class="line">chengmo</span><br><span class="line"> </span><br><span class="line">调用外部应用程序(system使用方法）</span><br><span class="line">[<span class="variable">@centos5</span> ~]<span class="variable">$ </span>awk <span class="string">'BEGIN&#123;b=system("ls -al");print b;&#125;'</span></span><br><span class="line">total <span class="number">42092</span></span><br><span class="line">drwxr-xr-x <span class="number">14</span> chengmo chengmo     <span class="number">4096</span> 09-<span class="number">30</span> <span class="number">17</span><span class="symbol">:</span><span class="number">47</span> .</span><br><span class="line">drwxr-xr-x <span class="number">95</span> root   root       <span class="number">4096</span> <span class="number">10</span>-08 <span class="number">14</span><span class="symbol">:</span><span class="number">01</span> ..</span><br></pre></td></tr></table></figure>
+<p>d.时间函数</p>
+<figure class="highlight haml"><table><tr><td class="code"><pre><span class="line">函数名                                     说明</span><br><span class="line">mktime( YYYY MM DD HH MM SS[ DST])         生成时间格式</span><br><span class="line">strftime([format [, timestamp]])           格式化时间输出，将时间戳转为时间字符串</span><br><span class="line">具体格式，见下表.</span><br><span class="line">systime()                        得到时间戳,返回从1970年1月1日开始到当前时间(不计闰年)的整秒数</span><br><span class="line"></span><br><span class="line">创建指定时间(mktime使用）</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;tstamp=mktime("2001 01 01 12 12 12");print strftime("%c",tstamp);&#125;'</span><br><span class="line">2001年01月01日 星期一 12时12分12秒</span><br><span class="line"></span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;tstamp1=mktime("2001 01 01 12 12 12");tstamp2=mktime("2001 02 01 0 0 0");print tstamp2-tstamp1;&#125;'</span><br><span class="line">2634468</span><br><span class="line">求2个时间段中间时间差,介绍了strftime使用方法</span><br><span class="line">[@centos5 ~]$ awk 'BEGIN&#123;tstamp1=mktime("2001 01 01 12 12 12");tstamp2=systime();print tstamp2-tstamp1;&#125;'</span><br><span class="line">308201392</span><br><span class="line"></span><br><span class="line">strftime日期和时间格式说明符</span><br><span class="line">格式     描述</span><br><span class="line"><span class="tag">%<span class="title">a</span></span>     星期几的缩写(Sun)</span><br><span class="line"><span class="tag">%<span class="title">A</span></span>     星期几的完整写法(Sunday)</span><br><span class="line"><span class="tag">%<span class="title">b</span></span>     月名的缩写(Oct)</span><br><span class="line"><span class="tag">%<span class="title">B</span></span>     月名的完整写法(October)</span><br><span class="line"><span class="tag">%<span class="title">c</span></span>     本地日期和时间</span><br><span class="line"><span class="tag">%<span class="title">d</span></span>     十进制日期</span><br><span class="line"><span class="tag">%<span class="title">D</span></span>     日期 08/20/99</span><br><span class="line"><span class="tag">%<span class="title">e</span></span>     日期，如果只有一位会补上一个空格</span><br><span class="line"><span class="tag">%<span class="title">H</span></span>     用十进制表示24小时格式的小时</span><br><span class="line"><span class="tag">%<span class="title">I</span></span>     用十进制表示12小时格式的小时</span><br><span class="line"><span class="tag">%<span class="title">j</span></span>     从1月1日起一年中的第几天</span><br><span class="line"><span class="tag">%<span class="title">m</span></span>     十进制表示的月份</span><br><span class="line"><span class="tag">%<span class="title">M</span></span>     十进制表示的分钟</span><br><span class="line"><span class="tag">%<span class="title">p</span></span>     12小时表示法(AM/PM)</span><br><span class="line"><span class="tag">%<span class="title">S</span></span>     十进制表示的秒</span><br><span class="line"><span class="tag">%<span class="title">U</span></span>     十进制表示的一年中的第几个星期(星期天作为一个星期的开始)</span><br><span class="line"><span class="tag">%<span class="title">w</span></span>     十进制表示的星期几(星期天是0)</span><br><span class="line"><span class="tag">%<span class="title">W</span></span>     十进制表示的一年中的第几个星期(星期一作为一个星期的开始)</span><br><span class="line"><span class="tag">%<span class="title">x</span></span>     重新设置本地日期(08/20/99)</span><br><span class="line"><span class="tag">%<span class="title">X</span></span>     重新设置本地时间(12：00：00)</span><br><span class="line"><span class="tag">%<span class="title">y</span></span>     两位数字表示的年(99)</span><br><span class="line"><span class="tag">%<span class="title">Y</span></span>     当前月份</span><br><span class="line"><span class="tag">%<span class="title">Z</span></span>     时区(PDT)</span><br><span class="line"><span class="tag">%</span>%     百分号(%)</span><br></pre></td></tr></table></figure>
+<p><strong>4.参考</strong></p>
+<p><a href="http://www.gnu.org/software/gawk/manual/gawk.html" target="_blank" rel="external">http://www.gnu.org/software/gawk/manual/gawk.html</a></p>
+<p><a href="http://cache.baiducontent.com/c?m=9f65cb4a8c8507ed4fece7631046893b4c4380146d8d8b492c93cf13d9735b361b31a5a660794613d3b37f600bac4a5aecf72172415876a09bbe8b4fd9ba91223888506e3643d855578e59f9c4077f967ece4de9de4aa2e3e732e2b9a3d3c82227dd23746df3869c5b7003bc69e76541f4d7e95f625e07bb9d2715fa4e0359&amp;p=8677d20586cc41ac52b5c62d021494&amp;newp=9b39c54ad6c04bf50be296391e478a231610db2151d7d31525&amp;user=baidu&amp;fm=sc&amp;query=shell+awk+%C2%DF%BC%AD%D4%CB%CB%E3%B7%FB&amp;qid=df496ac200000c8a&amp;p1=2" target="_blank" rel="external">awk,sed</a></p>
+
       
     </div>
     
