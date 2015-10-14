@@ -275,7 +275,171 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="grep简介">grep简介</h4><p>1.grep用法介绍<br><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">Usage: grep [OPTION]... PATTERN [<span class="keyword">FILE</span>]...</span><br><span class="line"><span class="keyword">Search</span> <span class="keyword">for</span> PATTERN <span class="keyword">in</span> each <span class="keyword">FILE</span> or standard <span class="keyword">input</span>.</span><br><span class="line">PATTERN is, <span class="keyword">by</span> default, a basic regular expression (BRE).</span><br><span class="line">Example: grep -i 'hello world' menu.<span class="keyword">h</span> main.c</span><br><span class="line"></span><br><span class="line">Regexp selection and interpretation:</span><br><span class="line">  -<span class="keyword">E</span>, --extended-regexp     PATTERN is <span class="keyword">an</span> extended regular expression (ERE)</span><br><span class="line">  -F, --fixed-strings       PATTERN is a <span class="keyword">set</span> of newline-separated fixed strings</span><br><span class="line">  -<span class="keyword">G</span>, --basic-regexp        PATTERN is a basic regular expression (BRE)</span><br><span class="line">  -P, --perl-regexp         PATTERN is a Perl regular expression</span><br><span class="line">  -<span class="keyword">e</span>, --regexp=PATTERN      <span class="keyword">use</span> PATTERN <span class="keyword">for</span> matching</span><br><span class="line">  -f, --<span class="keyword">file</span>=<span class="keyword">FILE</span>           obtain PATTERN from <span class="keyword">FILE</span></span><br><span class="line">  -i, --ignore-case         ignore case distinctions</span><br><span class="line">  -w, --word-regexp         force PATTERN to match only whole words</span><br><span class="line">  -x, --<span class="keyword">line</span>-regexp         force PATTERN to match only whole lines</span><br><span class="line">  -z, --null-data           a data <span class="keyword">line</span> ends <span class="keyword">in</span> 0 byte, not newline</span><br><span class="line"></span><br><span class="line">Miscellaneous:</span><br><span class="line">  -s, --<span class="keyword">no</span>-messages         suppress <span class="keyword">error</span> messages</span><br><span class="line">  -v, --invert-match        select non-matching lines</span><br><span class="line">  -V, --<span class="keyword">version</span>             <span class="keyword">print</span> <span class="keyword">version</span> information and <span class="keyword">exit</span></span><br><span class="line">      --<span class="keyword">help</span>                <span class="keyword">display</span> this <span class="keyword">help</span> and <span class="keyword">exit</span></span><br><span class="line">      --mmap                ignored <span class="keyword">for</span> backwards compatibility</span><br><span class="line"></span><br><span class="line">Output control:</span><br><span class="line">  -<span class="keyword">m</span>, --max-<span class="keyword">count</span>=NUM       stop after NUM matches</span><br><span class="line">  -b, --byte-offset         <span class="keyword">print</span> the byte offset with output lines</span><br><span class="line">  -<span class="keyword">n</span>, --<span class="keyword">line</span>-number         <span class="keyword">print</span> <span class="keyword">line</span> number with output lines</span><br><span class="line">      --<span class="keyword">line</span>-buffered       flush output <span class="keyword">on</span> every <span class="keyword">line</span></span><br><span class="line">  -<span class="keyword">H</span>, --with-filename       <span class="keyword">print</span> the filename <span class="keyword">for</span> each <span class="literal">match</span></span><br><span class="line">  -<span class="keyword">h</span>, --<span class="keyword">no</span>-filename         suppress the prefixing filename <span class="keyword">on</span> output</span><br><span class="line">      --<span class="keyword">label</span>=<span class="keyword">LABEL</span>         <span class="keyword">print</span> <span class="keyword">LABEL</span> <span class="keyword">as</span> filename <span class="keyword">for</span> standard <span class="keyword">input</span></span><br><span class="line">  -o, --only-matching       show only the part of a <span class="keyword">line</span> matching PATTERN</span><br><span class="line">  -q, --quiet, --silent     suppress all normal output</span><br><span class="line">      --binary-files=<span class="keyword">TYPE</span>   assume that binary files are <span class="keyword">TYPE</span>;</span><br><span class="line">                            <span class="keyword">TYPE</span> is <span class="label">`binary'</span>, <span class="label">`text'</span>, or `without-match'</span><br><span class="line">  -a, --text                equivalent to --binary-files=text</span><br><span class="line">  -I                        equivalent to --binary-files=without-<span class="literal">match</span></span><br><span class="line">  -<span class="keyword">d</span>, --directories=ACTION  how to handle directories;</span><br><span class="line">                            ACTION is <span class="label">`read'</span>, <span class="label">`recurse'</span>, or <span class="label">`skip'</span></span><br><span class="line">  -<span class="keyword">D</span>, --devices=ACTION      how to handle devices, FIFOs and sockets;</span><br><span class="line">                            ACTION is <span class="label">`read'</span> or <span class="label">`skip'</span></span><br><span class="line">  -R, -r, --recursive       equivalent to --directories=recurse</span><br><span class="line">      --<span class="keyword">include</span>=FILE_PATTERN  <span class="keyword">search</span> only files that match FILE_PATTERN</span><br><span class="line">      --exclude=FILE_PATTERN  skip files and directories matching FILE_PATTERN</span><br><span class="line">      --exclude-from=<span class="keyword">FILE</span>   skip files matching any <span class="keyword">file</span> pattern from <span class="keyword">FILE</span></span><br><span class="line">      --exclude-<span class="keyword">dir</span>=PATTERN  directories that match PATTERN will be skipped.</span><br><span class="line">  -<span class="keyword">L</span>, --files-without-match  <span class="keyword">print</span> only names of FILEs containing <span class="keyword">no</span> <span class="literal">match</span></span><br><span class="line">  -<span class="keyword">l</span>, --files-with-matches  <span class="keyword">print</span> only names of FILEs containing matches</span><br><span class="line">  -c, --<span class="keyword">count</span>               <span class="keyword">print</span> only a <span class="keyword">count</span> of matching lines per <span class="keyword">FILE</span></span><br><span class="line">  -T, --initial-<span class="keyword">tab</span>         make tabs <span class="keyword">line</span> up (<span class="keyword">if</span> needed)</span><br><span class="line">  -Z, --null                <span class="keyword">print</span> 0 byte after <span class="keyword">FILE</span> name</span><br><span class="line"></span><br><span class="line">Context control:</span><br><span class="line">  -B, --before-context=NUM  <span class="keyword">print</span> NUM lines of leading context</span><br><span class="line">  -A, --after-context=NUM   <span class="keyword">print</span> NUM lines of trailing context</span><br><span class="line">  -C, --context=NUM         <span class="keyword">print</span> NUM lines of output context</span><br><span class="line">  -NUM                      same <span class="keyword">as</span> --context=NUM</span><br><span class="line">      --color[=WHEN],</span><br><span class="line">      --colour[=WHEN]       <span class="keyword">use</span> markers to highlight the matching strings;</span><br><span class="line">                            WHEN is <span class="label">`always'</span>, <span class="label">`never'</span>, or <span class="label">`auto'</span></span><br><span class="line">  -<span class="keyword">U</span>, --binary              <span class="keyword">do</span> not strip CR characters at EOL (MSDOS)</span><br><span class="line">  -<span class="keyword">u</span>, --unix-byte-offsets   <span class="keyword">report</span> offsets <span class="keyword">as</span> <span class="keyword">if</span> CRs were not there (MSDOS)</span><br><span class="line"></span><br><span class="line"><span class="label">`egrep'</span> <span class="keyword">means</span> `grep -<span class="keyword">E</span>'.  <span class="label">`fgrep'</span> <span class="keyword">means</span> `grep -F'.</span><br><span class="line">Direct invocation <span class="keyword">as</span> either <span class="label">`egrep'</span> or <span class="label">`fgrep'</span> is deprecated.</span><br><span class="line">With <span class="keyword">no</span> <span class="keyword">FILE</span>, or when <span class="keyword">FILE</span> is -, <span class="keyword">read</span> standard <span class="keyword">input</span>.  <span class="keyword">If</span> less than <span class="keyword">two</span> FILEs</span><br><span class="line">are given, assume -<span class="keyword">h</span>.  <span class="keyword">Exit</span> status is 0 <span class="keyword">if</span> any <span class="keyword">line</span> was selected, 1 otherwise;</span><br><span class="line"><span class="keyword">if</span> any <span class="keyword">error</span> occurs and -q was not given, the <span class="keyword">exit</span> status is 2.</span><br><span class="line"></span><br><span class="line"><span class="keyword">Report</span> bugs to: bug-grep@gnu.org</span><br><span class="line">GNU Grep home page: &lt;http:<span class="comment">//www.gnu.org/software/grep/&gt;</span></span><br><span class="line">General <span class="keyword">help</span> using GNU software: &lt;http:<span class="comment">//www.gnu.org/gethelp/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>grep退出状态：<br>0: 表示成功；<br>1: 表示在所提供的文件无法找到匹配的pattern；<br>2: 表示参数中提供的文件不存在。<br>见如下示例：<br>/&gt; grep ‘root’ /etc/passwd<br>root:x:0:0:root:/root:/bin/bash<br>operator:x:11:0:operator:/root:/sbin/nologin<br>/&gt; echo $?<br>0</p>
+<p>/&gt; grep ‘root1’ /etc/passwd  #用户root1并不存在<br>/&gt; echo $?<br>1</p>
+<p>/&gt; grep ‘root’ /etc/passwd1  #这里的/etc/passwd1文件并不存在<br>grep: /etc/passwd1: No such file or directory<br>/&gt; echo $?<br>2</p>
+</li>
+<li><p>grep中应用正则表达式的实例：<br>需要说明的是下面所涉及的正则表达式在上一篇中已经给出了详细的说明，因此在看下面例子的时候，可以与前一篇的正则说明部分结合着看。<br>/&gt; cat testfile<br>northwest        NW      Charles Main           3.0     .98     3       34<br>western           WE       Sharon Gray          5.3     .97     5       23<br>southwest       SW       Lewis Dalsass         2.7     .8       2       18<br>southern         SO       Suan Chin               5.1     .95     4       15<br>southeast       SE        Patricia Hemenway    4.0     .7       4       17<br>eastern           EA        TB Savage              4.4     .84     5       20<br>northeast        NE        AM Main Jr.              5.1     .94     3       13<br>north              NO       Margot Weber          4.5     .89     5       9<br>central            CT        Ann Stephens          5.7     .94     5       13</p>
+</li>
+</ol>
+<pre><code>/&gt; <span class="keyword">grep</span> NW testfile     <span class="comment">#打印出testfile中所有包含NW的行。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'^n'</span> testfile   <span class="comment">#打印出以n开头的行。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+northeast        NE       AM Main Jr.          <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+north              NO      Margot Weber      <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'4$'</span> testfile   <span class="comment">#打印出以4结尾的行。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'5\..'</span> testfile <span class="comment">#打印出第一个字符是5，后面跟着一个.字符，再后面是任意字符的行。</span>
+western         WE      Sharon Gray         <span class="number">5.3</span>     .<span class="number">97</span>     <span class="number">5</span>       <span class="number">23</span>
+southern        SO      Suan Chin             <span class="number">5.1</span>     .<span class="number">95</span>     <span class="number">4</span>       <span class="number">15</span>
+northeast       NE      AM Main Jr.            <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+central           CT      Ann Stephens        <span class="number">5.7</span>     .<span class="number">94</span>     <span class="number">5</span>       <span class="number">13</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'\.5'</span> testfile  <span class="comment">#打印出所有包含.5的行。</span>
+north           NO      Margot Weber        <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'^[we]'</span> testfile <span class="comment">#打印出所有以w或e开头的行。</span>
+western         WE      Sharon Gray         <span class="number">5.3</span>     .<span class="number">97</span>     <span class="number">5</span>       <span class="number">23</span>
+eastern          EA      TB Savage            <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'[^0-9]'</span> testfile <span class="comment">#打印出所有不是以0-9开头的行。</span>
+northwest       NW     Charles Main             <span class="number">3.0</span>     .<span class="number">98</span>      <span class="number">3</span>       <span class="number">34</span>
+western          WE      Sharon Gray             <span class="number">5.3</span>     .<span class="number">97</span>     <span class="number">5</span>       <span class="number">23</span>
+southwest       SW     Lewis Dalsass           <span class="number">2.7</span>     .<span class="number">8</span>       <span class="number">2</span>       <span class="number">18</span>
+southern         SO      Suan Chin                <span class="number">5.1</span>     .<span class="number">95</span>     <span class="number">4</span>       <span class="number">15</span>
+southeast        SE      Patricia Hemenway     <span class="number">4.0</span>     .<span class="number">7</span>      <span class="number">4</span>       <span class="number">17</span>
+eastern           EA      TB Savage                <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+northeast        NE      AM Main Jr.                <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+north              NO      Margot Weber           <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+central            CT      Ann Stephens            <span class="number">5.7</span>     .<span class="number">94</span>     <span class="number">5</span>       <span class="number">13</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'[A-Z][A-Z] [A-Z]'</span> testfile <span class="comment">#打印出所有包含前两个字符是大写字符，后面紧跟一个空格及一个大写字母的行。</span>
+eastern          EA      TB Savage       <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+northeast       NE      AM Main Jr.      <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+注：在执行以上命令时，如果不能得到预期的结果，即<span class="keyword">grep</span>忽略了大小写，导致这一问题的原因很可能是当前环境的本地化的设置问题。对于以上命令，如果我将当前语言设置为en_US的时候，它会打印出所有的行，当我将其修改为中文环境时，就能得到我现在的输出了。
+/&gt; export LANG=zh_CN  <span class="comment">#设置当前的语言环境为中文。</span>
+/&gt; export LANG=en_US  <span class="comment">#设置当前的语言环境为美国。</span>
+/&gt; export LANG=en_Br  <span class="comment">#设置当前的语言环境为英国。</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'[a-z]\{9\}'</span> testfile <span class="comment">#打印所有包含每个字符串至少有9个连续小写字符的字符串的行。</span>
+northwest        NW      Charles Main          <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+southwest       SW      Lewis Dalsass         <span class="number">2.7</span>     .<span class="number">8</span>       <span class="number">2</span>       <span class="number">18</span>
+southeast        SE      Patricia Hemenway   <span class="number">4.0</span>     .<span class="number">7</span>       <span class="number">4</span>       <span class="number">17</span>
+northeast        NE      AM Main Jr.              <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+
+<span class="comment">#第一个字符是3，紧跟着一个句点，然后是任意一个数字，然后是任意个任意字符，然后又是一个3，然后是制表符，然后又是一个3，需要说明的是，下面正则中的\1表示\(3\)。</span>
+/&gt; <span class="keyword">grep</span> <span class="string">'\(3\)\.[0-9].*\1    *\1'</span> testfile 
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'\&lt;north'</span> testfile    <span class="comment">#打印所有以north开头的单词的行。</span>
+northwest       NW      Charles Main          <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+northeast        NE       AM Main Jr.            <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+north              NO      Margot Weber        <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'\&lt;north\&gt;'</span> testfile  <span class="comment">#打印所有包含单词north的行。</span>
+north           NO      Margot Weber        <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'^n\w*'</span> testfile      <span class="comment">#第一个字符是n，后面是任意字母或者数字。</span>
+northwest       NW     Charles Main          <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+northeast        NE      AM Main Jr.            <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+north             NO      Margot Weber        <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+<span class="number">3</span>.  扩展<span class="keyword">grep</span>(<span class="keyword">grep</span> -E 或者 egrep)：
+使用扩展<span class="keyword">grep</span>的主要好处是增加了额外的正则表达式元字符集。下面我们还是继续使用实例来演示扩展<span class="keyword">grep</span>。
+/&gt; egrep <span class="string">'NW|EA'</span> testfile     <span class="comment">#打印所有包含NW或EA的行。如果不是使用egrep，而是grep，将不会有结果查出。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+eastern         EA      TB Savage           <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+
+/&gt; <span class="keyword">grep</span> <span class="string">'NW\|EA'</span> testfile     <span class="comment">#对于标准grep，如果在扩展元字符前面加\，grep会自动启用扩展选项-E。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+eastern           EA       TB Savage           <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+
+/&gt; egrep <span class="string">'3+'</span> testfile
+/&gt; <span class="keyword">grep</span> -E <span class="string">'3+'</span> testfile
+/&gt; <span class="keyword">grep</span> <span class="string">'3\+'</span> testfile        <span class="comment">#这3条命令将会打印出相同的结果，即所有包含一个或多个3的行。</span>
+northwest       NW      Charles Main         <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+western          WE      Sharon Gray         <span class="number">5.3</span>     .<span class="number">97</span>     <span class="number">5</span>       <span class="number">23</span>
+northeast        NE       AM Main Jr.           <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+central            CT       Ann Stephens       <span class="number">5.7</span>     .<span class="number">94</span>     <span class="number">5</span>       <span class="number">13</span>
+
+/&gt; egrep <span class="string">'2\.?[0-9]'</span> testfile 
+/&gt; <span class="keyword">grep</span> -E <span class="string">'2\.?[0-9]'</span> testfile
+/&gt; <span class="keyword">grep</span> <span class="string">'2\.\?[0-9]'</span> testfile <span class="comment">#首先含有2字符，其后紧跟着0个或1个点，后面再是0和9之间的数字。</span>
+western         WE       Sharon Gray          <span class="number">5.3</span>     .<span class="number">97</span>     <span class="number">5</span>       <span class="number">23</span>
+southwest      SW      Lewis Dalsass         <span class="number">2.7</span>     .<span class="number">8</span>      <span class="number">2</span>       <span class="number">18</span>
+eastern          EA       TB Savage             <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+
+/&gt; egrep <span class="string">'(no)+'</span> testfile
+/&gt; <span class="keyword">grep</span> -E <span class="string">'(no)+'</span> testfile
+/&gt; <span class="keyword">grep</span> <span class="string">'\(no\)\+'</span> testfile   <span class="comment">#3个命令返回相同结果，即打印一个或者多个连续的no的行。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+northeast        NE       AM Main Jr.          <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+north              NO      Margot Weber      <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+/&gt; <span class="keyword">grep</span> -E <span class="string">'\w+\W+[ABC]'</span> testfile <span class="comment">#首先是一个或者多个字母，紧跟着一个或者多个非字母数字，最后一个是ABC中的一个。</span>
+northwest       NW     Charles Main       <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+southern        SO      Suan Chin           <span class="number">5.1</span>     .<span class="number">95</span>     <span class="number">4</span>       <span class="number">15</span>
+northeast       NE      AM Main Jr.          <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+central           CT      Ann Stephens      <span class="number">5.7</span>     .<span class="number">94</span>     <span class="number">5</span>       <span class="number">13</span>
+
+/&gt; egrep <span class="string">'[Ss](h|u)'</span> testfile
+/&gt; <span class="keyword">grep</span> -E <span class="string">'[Ss](h|u)'</span> testfile
+/&gt; <span class="keyword">grep</span> <span class="string">'[Ss]\(h\|u\)'</span> testfile   <span class="comment">#3个命令返回相同结果，即以S或s开头，紧跟着h或者u的行。</span>
+western         WE      Sharon Gray       <span class="number">5.3</span>     .<span class="number">97</span>     <span class="number">5</span>       <span class="number">23</span>
+southern        SO      Suan Chin          <span class="number">5.1</span>     .<span class="number">95</span>     <span class="number">4</span>       <span class="number">15</span>
+
+/&gt; egrep <span class="string">'w(es)t.*\1'</span> testfile    <span class="comment">#west开头，其中es为\1的值，后面紧跟着任意数量的任意字符，最后还有一个es出现在该行。</span>
+northwest       NW      Charles Main        <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+
+
+<span class="number">4</span>.  <span class="keyword">grep</span>选项：
+这里先列出<span class="keyword">grep</span>常用的命令行选项：
+</code></pre><p>选项    说明<br>-c    只显示有多少行匹配，而不具体显示匹配的行。<br>-h    不显示文件名。<br>-i    在字符串比较的时候忽略大小写。<br>-l    只显示包含匹配模板的行的文件名清单。<br>-L    只显示不包含匹配模板的行的文件名清单。<br>-n    在每一行前面打印该行在文件中的行数。<br>-v    反向检索，只显示不匹配的行。<br>-w    只显示完整单词的匹配。<br>-x    只显示完整行的匹配。<br>-r/-R    如果文件参数是目录，该选项将递归搜索该目录下的所有子目录和文件。<br>    /&gt; grep -n ‘^south’ testfile  #-n选项在每一个匹配行的前面打印行号。<br>    3:southwest     SW      Lewis Dalsass         2.7     .8      2       18<br>    4:southern       SO      Suan Chin               5.1     .95     4       15<br>    5:southeast      SE      Patricia Hemenway    4.0     .7      4       17</p>
+<pre><code>/&gt; <span class="keyword">grep</span> -i <span class="string">'pat'</span> testfile     <span class="comment">#-i选项关闭了大小写敏感。</span>
+southeast       SE      Patricia Hemenway       <span class="number">4.0</span>     .<span class="number">7</span>      <span class="number">4</span>       <span class="number">17</span>
+
+/&gt; <span class="keyword">grep</span> -v <span class="string">'Suan Chin'</span> testfile <span class="comment">#打印所有不包含Suan Chin的行。</span>
+northwest       NW      Charles Main          <span class="number">3.0</span>     .<span class="number">98</span>     <span class="number">3</span>       <span class="number">34</span>
+western          WE      Sharon Gray           <span class="number">5.3</span>     .<span class="number">97</span>    <span class="number">5</span>       <span class="number">23</span>
+southwest       SW      Lewis Dalsass        <span class="number">2.7</span>     .<span class="number">8</span>      <span class="number">2</span>       <span class="number">18</span>
+southeast        SE      Patricia Hemenway   <span class="number">4.0</span>     .<span class="number">7</span>      <span class="number">4</span>       <span class="number">17</span>
+eastern           EA      TB Savage              <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+northeast        NE      AM Main Jr.             <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+north              NO      Margot Weber        <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+central            CT      Ann Stephens         <span class="number">5.7</span>     .<span class="number">94</span>     <span class="number">5</span>       <span class="number">13</span>
+
+/&gt; <span class="keyword">grep</span> -l <span class="string">'ss'</span> testfile  <span class="comment">#-l使得grep只打印匹配的文件名，而不打印匹配的行。</span>
+testfile
+
+/&gt; <span class="keyword">grep</span> -c <span class="string">'west'</span> testfile <span class="comment">#-c使得grep只打印有多少匹配模板的行。</span>
+<span class="number">3</span>
+
+/&gt; <span class="keyword">grep</span> -w <span class="string">'north'</span> testfile <span class="comment">#-w只打印整个单词匹配的行。</span>
+north           NO      Margot Weber    <span class="number">4.5</span>     .<span class="number">89</span>     <span class="number">5</span>       <span class="number">9</span>
+
+/&gt; <span class="keyword">grep</span> -C <span class="number">2</span> Patricia testfile <span class="comment">#打印匹配行及其上下各两行。</span>
+southwest      SW     Lewis Dalsass         <span class="number">2.7</span>     .<span class="number">8</span>       <span class="number">2</span>       <span class="number">18</span>
+southern        SO      Suan Chin              <span class="number">5.1</span>     .<span class="number">95</span>     <span class="number">4</span>       <span class="number">15</span>
+southeast       SE      Patricia Hemenway   <span class="number">4.0</span>     .<span class="number">7</span>      <span class="number">4</span>       <span class="number">17</span>
+eastern          EA      TB Savage              <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+northeast       NE      AM Main Jr.             <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+
+/&gt; <span class="keyword">grep</span> -B <span class="number">2</span> Patricia testfile <span class="comment">#打印匹配行及其前两行。</span>
+southwest      SW      Lewis Dalsass         <span class="number">2.7</span>     .<span class="number">8</span>      <span class="number">2</span>       <span class="number">18</span>
+southern        SO      Suan Chin               <span class="number">5.1</span>     .<span class="number">95</span>    <span class="number">4</span>       <span class="number">15</span>
+southeast       SE      Patricia Hemenway   <span class="number">4.0</span>     .<span class="number">7</span>      <span class="number">4</span>       <span class="number">17</span>
+
+/&gt; <span class="keyword">grep</span> -A <span class="number">2</span> Patricia testfile <span class="comment">#打印匹配行及其后两行。</span>
+southeast       SE      Patricia Hemenway   <span class="number">4.0</span>     .<span class="number">7</span>      <span class="number">4</span>       <span class="number">17</span>
+eastern           EA      TB Savage              <span class="number">4.4</span>     .<span class="number">84</span>     <span class="number">5</span>       <span class="number">20</span>
+northeast       NE       AM Main Jr.             <span class="number">5.1</span>     .<span class="number">94</span>     <span class="number">3</span>       <span class="number">13</span>
+</code></pre>
       
     </div>
     
